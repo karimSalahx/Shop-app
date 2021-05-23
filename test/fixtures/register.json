@@ -1,0 +1,11 @@
+{
+    "status": true,
+    "message": "Registration done successfully",
+    "data": {
+        "name": "Abdelrahman ALgazzar",
+        "phone": "12384678",
+        "email": "algazza.abdelrahman@gmaill.com",
+        "id": 943,
+        "token": "54jjNlhivnYE1ylZqfs9CIxBcT1Gezb8RKQ282DSkUqoODMLSr04hggQOsWmkzTx6coMix"
+    }
+}

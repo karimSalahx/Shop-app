@@ -1,0 +1,13 @@
+{
+    "status": true,
+    "message": "Login done successfully",
+    "data": {
+        "id": 613,
+        "name": "Abdelrahman ALgazzar",
+        "email": "karemmohamed2002@gmail.com",
+        "phone": "123456728",
+        "points": 0,
+        "credit": 0,
+        "token": "tCzXE8ITM0752meGP5DKhZL7SEkCbUbutfj4pxlXFgMGmO7lttZQlM9SfqOryJVNPZJskm"
+    }
+}
