@@ -51,12 +51,13 @@ void main() {
           "tCzXE8ITM0752meGP5DKhZL7SEkCbUbutfj4pxlXFgMGmO7lttZQlM9SfqOryJVNPZJskm",
     );
     final tRegisterDataModel = RegisterDataModel(
-        name: "Abdelrahman ALgazzar",
-        phone: "12384678",
-        email: "algazza.abdelrahman@gmaill.com",
-        id: 943,
-        token:
-            "54jjNlhivnYE1ylZqfs9CIxBcT1Gezb8RKQ282DSkUqoODMLSr04hggQOsWmkzTx6coMix");
+      name: "Abdelrahman ALgazzar",
+      phone: "12384678",
+      email: "algazza.abdelrahman@gmaill.com",
+      id: 943,
+      token:
+          "54jjNlhivnYE1ylZqfs9CIxBcT1Gezb8RKQ282DSkUqoODMLSr04hggQOsWmkzTx6coMix",
+    );
     final tRegisterModel = RegisterModel(
         status: true,
         message: "Registration done successfully",
