@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:tdd_test/core/error/server_exception.dart';
+import '../../../../core/error/server_exception.dart';
 import '../model/register_model.dart';
 import '../../domain/usecases/register_user.dart';
 

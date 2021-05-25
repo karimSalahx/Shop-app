@@ -3,19 +3,19 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:tdd_test/core/error/failures.dart';
-import 'package:tdd_test/features/authentication/data/model/login_model.dart';
-import 'package:tdd_test/features/authentication/data/model/register_model.dart';
-import 'package:tdd_test/features/authentication/domain/entity/login_model.dart';
-import 'package:tdd_test/features/authentication/domain/entity/register_model.dart';
-import 'package:tdd_test/features/authentication/domain/usecases/login_user.dart';
-import 'package:tdd_test/features/authentication/domain/usecases/register_user.dart';
+import '../../../../../core/error/failures.dart';
+import '../../../domain/entity/login_model.dart';
+import '../../../domain/entity/register_model.dart';
+import '../../../domain/usecases/login_user.dart';
+import '../../../domain/usecases/register_user.dart';
 
 part 'authentication_event.dart';
 part 'authentication_state.dart';
 
 const String SERVER_FAILURE_MESSAGE = 'Server Failure';
 const String CACHE_FAILURE_MESSAGE = 'Cache Failure';
+const String CREDENTIAL_FAILURE_MESSAGE =
+    'Credentials Entered are not Correct!';
 
 class AuthenticationBloc
     extends Bloc<AuthenticationEvent, AuthenticationState> {
@@ -69,7 +69,9 @@ class AuthenticationBloc
       case CacheFailure:
         return CACHE_FAILURE_MESSAGE;
         break;
-
+      case CredentialsFailure:
+        return CREDENTIAL_FAILURE_MESSAGE;
+        break;
       default:
         return 'Unexpected Error';
         break;

@@ -1,11 +1,8 @@
-import 'dart:convert';
-
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:mockito/mockito.dart';
 import 'package:tdd_test/core/error/server_exception.dart';
 import 'package:tdd_test/features/authentication/data/datasources/authentication_register_user.dart';
-import 'package:tdd_test/features/authentication/data/model/login_model.dart';
 import 'package:tdd_test/features/authentication/data/model/register_model.dart';
 import 'package:tdd_test/features/authentication/domain/usecases/register_user.dart';
 

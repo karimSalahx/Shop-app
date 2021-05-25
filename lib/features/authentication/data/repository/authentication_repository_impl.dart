@@ -29,12 +29,16 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
         email: email,
         password: password,
       );
-      await authenticationLoginUser.cacheToken(_userModel.data.token);
+      if (_userModel.data != null) {
+        await authenticationLoginUser.cacheToken(_userModel.data.token);
+      }
       return Right(_userModel);
     } on ServerException {
       return Left(ServerFailure());
     } on CacheException {
       return Left(CacheFailure());
+    } on CredentialException {
+      return Left(CredentialsFailure());
     }
   }
 

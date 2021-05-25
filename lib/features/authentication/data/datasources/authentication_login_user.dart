@@ -48,7 +48,11 @@ class AuthenticationLoginUserImpl implements AuthenticationLoginUser {
       headers: {'Content-Type': 'application/json', 'lang': 'en'},
     );
     if (response.statusCode == 200) {
-      return LoginModel.fromJson(jsonDecode(response.body));
+      final _loginModel = LoginModel.fromJson(jsonDecode(response.body));
+      if (_loginModel.status == false)
+        throw CredentialException();
+      else
+        return _loginModel;
     } else {
       throw ServerException();
     }

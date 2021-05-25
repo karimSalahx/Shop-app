@@ -83,6 +83,21 @@ void main() {
       );
     }
 
+    void setUpMockClientSuccess200ButFailureInput() {
+      when(
+        mockHttpClient.post(
+          any,
+          headers: anyNamed('headers'),
+          body: anyNamed('body'),
+        ),
+      ).thenAnswer(
+        (_) async => http.Response(
+          fixture('failure_login.json'),
+          200,
+        ),
+      );
+    }
+
     void setUpMockHttpClientFail() {
       when(
         mockHttpClient.post(
@@ -132,6 +147,19 @@ void main() {
         // assert
         expect(() => fun(email: temail, password: tPassword),
             throwsA(isA<ServerException>()));
+      },
+    );
+
+    test(
+      'should throw credentials exception if status is failure',
+      () async {
+        // arrange
+        setUpMockClientSuccess200ButFailureInput();
+        // act
+        final fun = loginUserImpl.loginUser;
+        // assert
+        expect(() => fun(email: temail, password: tPassword),
+            throwsA(isA<CredentialException>()));
       },
     );
 

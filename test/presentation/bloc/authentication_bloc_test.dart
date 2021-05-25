@@ -29,24 +29,6 @@ void main() {
     );
   });
 
-  final temail = 'user@gmail.com';
-  final tPassword = '12345';
-  final tDataModel = LoginData(
-    id: 613,
-    name: "Abdelrahman ALgazzar",
-    email: "karemmohamed2002@gmail.com",
-    phone: "123456728",
-    points: 0,
-    credit: 0,
-    token:
-        "tCzXE8ITM0752meGP5DKhZL7SEkCbUbutfj4pxlXFgMGmO7lttZQlM9SfqOryJVNPZJskm",
-  );
-  final tLoginModel = LoginEntity(
-    status: true,
-    message: 'Login Done successfulyy',
-    data: tDataModel,
-  );
-
   test(
     'Initial state should be AuthenticationIntialState',
     () async {
