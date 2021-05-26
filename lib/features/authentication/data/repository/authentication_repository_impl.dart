@@ -37,8 +37,8 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
       return Left(ServerFailure());
     } on CacheException {
       return Left(CacheFailure());
-    } on CredentialException {
-      return Left(CredentialsFailure());
+    } on CredentialException catch (e) {
+      return Left(CredentialsFailure(e.message));
     }
   }
 
@@ -58,6 +58,8 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
       return Right(_userRegisterModel);
     } on ServerException {
       return Left(ServerFailure());
+    } on CredentialException catch (e) {
+      return Left(CredentialsFailure(e.message));
     }
   }
 }

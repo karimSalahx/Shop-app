@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:tdd_test/features/authentication/presentation/pages/register_page.dart';
+import 'package:tdd_test/features/authentication/presentation/pages/login_page.dart';
 import 'package:tdd_test/features/authentication/presentation/widgets/animated_obacity_login_register_text.dart';
 
-class CustomCreateAccount extends StatelessWidget {
+class CustomAlreadyHaveAnAccount extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          'Don\'t have an account?',
+          'Already have an account? ',
           style: TextStyle(
             color: Colors.black54,
             fontWeight: FontWeight.bold,
@@ -17,10 +17,10 @@ class CustomCreateAccount extends StatelessWidget {
         ),
         SizedBox(width: 2),
         AnimatedObacityLoginRegisterText(
-          text: 'Register',
+          text: 'Login',
           onClick: () => Navigator.of(context).pushReplacement(
             MaterialPageRoute(
-              builder: (_) => RegisterPage(),
+              builder: (_) => LoginPage(),
             ),
           ),
         ),

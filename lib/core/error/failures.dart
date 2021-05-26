@@ -12,4 +12,7 @@ class ServerFailure extends Failures {}
 
 class CacheFailure extends Failures {}
 
-class CredentialsFailure extends Failures {}
+class CredentialsFailure extends Failures {
+  final String message;
+  CredentialsFailure(this.message);
+}

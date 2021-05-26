@@ -71,6 +71,21 @@ void main() {
       );
     }
 
+    void setUpMockClientSuccess200ButFailureInput() {
+      when(
+        mockHttpClient.post(
+          any,
+          headers: anyNamed('headers'),
+          body: anyNamed('body'),
+        ),
+      ).thenAnswer(
+        (_) async => http.Response(
+          fixture('failure_register.json'),
+          200,
+        ),
+      );
+    }
+
     test(
       '''
             should perform a POST request on a url
@@ -101,6 +116,18 @@ void main() {
         final fun = registerUserImpl.registerUser;
         // assert
         expect(() => fun(tRegisterParam), throwsA(isA<ServerException>()));
+      },
+    );
+
+    test(
+      'should throw credential exception if response code is 200 and status is failed',
+      () async {
+        // arrange
+        setUpMockClientSuccess200ButFailureInput();
+        // act
+        final fun = registerUserImpl.registerUser;
+        // assert
+        expect(() => fun(tRegisterParam), throwsA(isA<CredentialException>()));
       },
     );
     test(

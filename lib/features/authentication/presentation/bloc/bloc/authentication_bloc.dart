@@ -27,6 +27,8 @@ class AuthenticationBloc
           AuthenticationInitialState(),
         );
 
+  bool isVisible = true;
+
   @override
   Stream<AuthenticationState> mapEventToState(
     AuthenticationEvent event,
@@ -58,6 +60,13 @@ class AuthenticationBloc
           yield AuthenticationRegisteredState(r);
         },
       );
+    } else if (event is ChangePasswordVisibiliyEvent) {
+      isVisible = !isVisible;
+      // false
+      if (isVisible)
+        yield PasswordVisibleState();
+      else
+        yield PasswordNotVisibleState();
     }
   }
 
@@ -70,7 +79,7 @@ class AuthenticationBloc
         return CACHE_FAILURE_MESSAGE;
         break;
       case CredentialsFailure:
-        return CREDENTIAL_FAILURE_MESSAGE;
+        return (l as CredentialsFailure).message;
         break;
       default:
         return 'Unexpected Error';

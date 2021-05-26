@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 import '../../../../core/error/failures.dart';
 import '../entity/register_model.dart';
@@ -15,11 +16,12 @@ class RegisterUser extends UseCases<RegisterEntity, RegisterParamModel> {
   }
 }
 
-class RegisterParamModel {
-  String name;
-  String phone;
-  String email;
-  String password;
+@immutable
+class RegisterParamModel extends Equatable {
+  final String name;
+  final String phone;
+  final String email;
+  final String password;
 
   RegisterParamModel({
     @required this.name,
@@ -27,4 +29,7 @@ class RegisterParamModel {
     @required this.email,
     @required this.password,
   });
+
+  @override
+  List<Object> get props => [this.name, this.phone, this.password, this.email];
 }

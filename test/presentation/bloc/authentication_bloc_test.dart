@@ -13,6 +13,8 @@ class MockLoginUser extends Mock implements LoginUser {}
 
 class MockRegisterUser extends Mock implements RegisterUser {}
 
+class MockAuthenticationBloc extends Mock implements AuthenticationBloc {}
+
 const String SERVER_FAILURE_MESSAGE = 'Server Failure';
 const String CACHE_FAILURE_MESSAGE = 'Cache Failure';
 void main() {

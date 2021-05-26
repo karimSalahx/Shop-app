@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tdd_test/core/regex_helper.dart';
 import '../bloc/bloc/authentication_bloc.dart';
 import 'logged_in_page.dart';
 import '../widgets/custom_login_register_button.dart';
@@ -13,10 +14,9 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  String _email;
-  String _password;
-  TextEditingController _emailController;
-  TextEditingController _passwordController;
+  String _email, _password;
+  TextEditingController _emailController, _passwordController;
+  GlobalKey<FormState> _globalKey = GlobalKey<FormState>();
   @override
   void initState() {
     super.initState();
@@ -33,36 +33,39 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
-      child: Scaffold(
-        body: Center(
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12.0),
-              child: BlocConsumer<AuthenticationBloc, AuthenticationState>(
-                listener: (context, state) {
-                  if (state is AuthenticationErrorState)
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text(
-                          state.message,
-                          style: TextStyle(
-                            color: Colors.white,
+    return Form(
+      key: _globalKey,
+      child: GestureDetector(
+        onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
+        child: Scaffold(
+          resizeToAvoidBottomInset: false,
+          body: Center(
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                child: BlocListener<AuthenticationBloc, AuthenticationState>(
+                  listener: (context, state) {
+                    if (state is AuthenticationErrorState)
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            state.message,
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                            textAlign: TextAlign.center,
                           ),
+                          backgroundColor: Theme.of(context).errorColor,
                         ),
-                        backgroundColor: Theme.of(context).errorColor,
-                      ),
-                    );
-                  else if (state is AuthenticationLoggedInState)
-                    Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(
-                        builder: (_) => LoggedInPage(),
-                      ),
-                    );
-                },
-                builder: (context, state) {
-                  return Column(
+                      );
+                    else if (state is AuthenticationLoggedInState)
+                      Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(
+                          builder: (_) => LoggedInPage(),
+                        ),
+                      );
+                  },
+                  child: Column(
                     children: [
                       LoginPageText(),
                       SizedBox(height: 20),
@@ -72,15 +75,24 @@ class _LoginPageState extends State<LoginPage> {
                         isPassword: false,
                         controller: _emailController,
                         onChanged: (value) => _email = value,
+                        validator: (value) {
+                          if (!RegexHelper.emailRegEx.hasMatch(value))
+                            return 'Please Enter a valid email adress';
+                          return null;
+                        },
                       ),
                       SizedBox(height: 20),
                       CustomLoginRegisterTextField(
-                        labelText: 'Password',
-                        prefixIcon: Icons.lock_outline,
-                        isPassword: true,
-                        controller: _passwordController,
-                        onChanged: (value) => _password = value,
-                      ),
+                          labelText: 'Password',
+                          prefixIcon: Icons.lock_outline,
+                          isPassword: true,
+                          controller: _passwordController,
+                          onChanged: (value) => _password = value,
+                          validator: (value) {
+                            if (value.length < 6)
+                              return 'Password should be at least 6 characters';
+                            return null;
+                          }),
                       SizedBox(height: 20),
                       BlocBuilder<AuthenticationBloc, AuthenticationState>(
                         builder: (context, state) {
@@ -98,8 +110,8 @@ class _LoginPageState extends State<LoginPage> {
                       SizedBox(height: 20),
                       CustomCreateAccount(),
                     ],
-                  );
-                },
+                  ),
+                ),
               ),
             ),
           ),
@@ -109,11 +121,14 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void _dispatchLogin() {
-    BlocProvider.of<AuthenticationBloc>(context).add(
-      LogInAuthenticationEvent(
-        email: _email.trim(),
-        password: _password.trim(),
-      ),
-    );
+    _globalKey.currentState.save();
+    if (_globalKey.currentState.validate()) {
+      BlocProvider.of<AuthenticationBloc>(context).add(
+        LogInAuthenticationEvent(
+          email: _email.trim(),
+          password: _password.trim(),
+        ),
+      );
+    }
   }
 }

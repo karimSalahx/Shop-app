@@ -21,7 +21,11 @@ class AuthenticationRegisterUserImpl implements AuthenticationRegisterUser {
       headers: {'Content-Type': 'application/json', 'lang': 'en'},
     );
     if (response.statusCode == 200) {
-      return RegisterModel.fromJson(jsonDecode(response.body));
+      final _registerModel = RegisterModel.fromJson(jsonDecode(response.body));
+      if (_registerModel.status == false)
+        throw CredentialException(_registerModel.message);
+      else
+        return _registerModel;
     } else {
       throw ServerException();
     }

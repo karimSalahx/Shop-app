@@ -33,3 +33,7 @@ class AuthenticationErrorState extends AuthenticationState {
   @override
   List<Object> get props => [message];
 }
+
+class PasswordVisibleState extends AuthenticationState {}
+
+class PasswordNotVisibleState extends AuthenticationState {}

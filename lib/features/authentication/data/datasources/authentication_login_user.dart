@@ -50,7 +50,7 @@ class AuthenticationLoginUserImpl implements AuthenticationLoginUser {
     if (response.statusCode == 200) {
       final _loginModel = LoginModel.fromJson(jsonDecode(response.body));
       if (_loginModel.status == false)
-        throw CredentialException();
+        throw CredentialException(_loginModel.message);
       else
         return _loginModel;
     } else {
