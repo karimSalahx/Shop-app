@@ -123,7 +123,6 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void _dispatchLogin() {
-    _passwordController.clear();
     _globalKey.currentState.save();
     if (_globalKey.currentState.validate()) {
       BlocProvider.of<AuthenticationBloc>(context).add(
@@ -133,5 +132,6 @@ class _LoginPageState extends State<LoginPage> {
         ),
       );
     }
+    _passwordController.clear();
   }
 }

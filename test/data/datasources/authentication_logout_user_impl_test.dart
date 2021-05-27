@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:http/http.dart' as http;
@@ -42,7 +40,6 @@ void main() {
         mockHttpClient.post(
           any,
           headers: anyNamed('headers'),
-          body: anyNamed('body'),
         ),
       ).thenAnswer(
         (_) async => http.Response(
@@ -57,7 +54,6 @@ void main() {
         mockHttpClient.post(
           any,
           headers: anyNamed('headers'),
-          body: anyNamed('body'),
         ),
       ).thenAnswer(
         (_) async => http.Response(
@@ -72,7 +68,6 @@ void main() {
         mockHttpClient.post(
           any,
           headers: anyNamed('headers'),
-          body: anyNamed('body'),
         ),
       ).thenAnswer(
         (_) async => http.Response(
@@ -90,15 +85,20 @@ void main() {
       ''',
       () async {
         // arrange
+        when(mockSharedPreferneces.getString(any)).thenReturn(tToken);
         setUpMockClientSuccess200();
         // act
-        await logoutUserImpl.logoutUser(tToken);
+        await logoutUserImpl.logoutUser();
         // assert
+        verify(mockSharedPreferneces.getString(CACHE_TOKEN));
         verify(
           mockHttpClient.post(
             Uri.parse(_baseUrl + 'logout'),
-            headers: {'Content-Type': 'application/json', 'lang': 'en'},
-            body: jsonEncode(<String, String>{'Authorization': tToken}),
+            headers: {
+              'Content-Type': 'application/json',
+              'lang': 'en',
+              'Authorization': tToken
+            },
           ),
         );
       },
@@ -112,7 +112,7 @@ void main() {
         // act
         final fun = logoutUserImpl.logoutUser;
         // assert
-        expect(() => fun(tToken), throwsA(isA<ServerException>()));
+        expect(() => fun(), throwsA(isA<ServerException>()));
       },
     );
     test(
@@ -123,7 +123,7 @@ void main() {
         // act
         final fun = logoutUserImpl.logoutUser;
         // assert
-        expect(() => fun(tToken), throwsA(isA<CredentialException>()));
+        expect(() => fun(), throwsA(isA<CredentialException>()));
       },
     );
 
@@ -136,7 +136,7 @@ void main() {
         when(mockSharedPreferneces.containsKey(any)).thenReturn(true);
         when(mockSharedPreferneces.remove(any)).thenAnswer((_) async => true);
         // act
-        await logoutUserImpl.logoutUser(tToken);
+        await logoutUserImpl.logoutUser();
         // assert
         verify(mockSharedPreferneces.remove(CACHE_TOKEN));
       },
@@ -152,7 +152,7 @@ void main() {
         // act
         final fun = logoutUserImpl.logoutUser;
         // assert
-        expect(() => fun(tToken), throwsA(isA<CacheException>()));
+        expect(() => fun(), throwsA(isA<CacheException>()));
       },
     );
 
@@ -163,7 +163,7 @@ void main() {
         setUpMockClientSuccess200();
         when(mockSharedPreferneces.containsKey(any)).thenReturn(false);
         // act
-        final res = await logoutUserImpl.logoutUser(tToken);
+        final res = await logoutUserImpl.logoutUser();
         // assert
         verifyNever(mockSharedPreferneces.remove(any));
         expect(res, equals(_logoutEntity));
@@ -178,7 +178,8 @@ void main() {
         when(mockSharedPreferneces.containsKey(any)).thenReturn(true);
         when(mockSharedPreferneces.remove(any)).thenAnswer((_) async => true);
         // act
-        final res = await logoutUserImpl.logoutUser(tToken);
+        final res = await logoutUserImpl.logoutUser();
+
         // assert
         expect(res, equals(_logoutEntity));
       },

@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:tdd_test/features/authentication/data/datasources/authentication_login_user.dart';
-import 'package:tdd_test/features/authentication/presentation/bloc/bloc/authentication_bloc.dart';
-import 'package:tdd_test/features/authentication/presentation/pages/login_page.dart';
-
-import '../../../../locator.dart';
+import '../bloc/bloc/authentication_bloc.dart';
+import 'login_page.dart';
 
 class LoggedInPage extends StatelessWidget {
   @override
@@ -39,11 +35,7 @@ class LoggedInPage extends StatelessWidget {
           else
             return TextButton(
               onPressed: () => BlocProvider.of<AuthenticationBloc>(context).add(
-                LogoutUserEvent(
-                  sl<SharedPreferences>().getString(
-                    CACHE_TOKEN,
-                  ),
-                ),
+                LogoutUserEvent(),
               ),
               child: Text(
                 'Log Out',

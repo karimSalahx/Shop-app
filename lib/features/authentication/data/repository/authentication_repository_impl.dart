@@ -61,9 +61,9 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
   }
 
   @override
-  Future<Either<Failures, LogoutModel>> logout(String token) async {
+  Future<Either<Failures, LogoutModel>> logout() async {
     try {
-      final _logoutModel = await authenticationLogoutUser.logoutUser(token);
+      final _logoutModel = await authenticationLogoutUser.logoutUser();
       return Right(_logoutModel);
     } on ServerException {
       return Left(ServerFailure());

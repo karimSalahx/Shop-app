@@ -10,7 +10,7 @@ const _baseUrl = 'https://student.valuxapps.com/api/';
 const CACHE_TOKEN = 'CACHE_TOKEN';
 
 abstract class AuthenticationLogoutUser {
-  Future<LogoutModel> logoutUser(String token);
+  Future<LogoutModel> logoutUser();
 }
 
 class AuthenticationLogoutUserImpl implements AuthenticationLogoutUser {
@@ -21,14 +21,20 @@ class AuthenticationLogoutUserImpl implements AuthenticationLogoutUser {
     @required this.sharedPreferences,
   });
   @override
-  Future<LogoutModel> logoutUser(String token) async {
+  Future<LogoutModel> logoutUser() async {
+    final String token = sharedPreferences.getString(CACHE_TOKEN);
     final response = await client.post(
       Uri.parse(_baseUrl + 'logout'),
-      headers: {'Content-Type': 'application/json', 'lang': 'en'},
-      body: jsonEncode(<String, String>{'Authorization': token}),
+      headers: {
+        'Content-Type': 'application/json',
+        'lang': 'en',
+        'Authorization': token,
+      },
     );
+
     if (response.statusCode == 200) {
       final _logoutModel = LogoutModel.fromJson(jsonDecode(response.body));
+      print(_logoutModel);
       if (_logoutModel.status == false)
         throw CredentialException(_logoutModel.message);
       else {

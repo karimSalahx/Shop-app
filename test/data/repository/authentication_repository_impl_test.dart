@@ -267,19 +267,16 @@ void main() {
     () {
       final _logoutEntity =
           LogoutModel(status: true, message: 'Logout done successfully');
-      final tToken =
-          'tdxlV4nUV8Jex8AKSIIX1uYECciKbTByz0l3OSfMEUawePy7bnX929cRKOnEF7rRaOa23J';
-
       test(
         'should logout user when the method is called',
         () async {
           // arrange
-          when(mockAuthenticationLogoutUser.logoutUser(any))
+          when(mockAuthenticationLogoutUser.logoutUser())
               .thenAnswer((_) async => _logoutEntity);
           // act
-          await authenticationRepositoryImpl.logout(tToken);
+          await authenticationRepositoryImpl.logout();
           // assert
-          verify(mockAuthenticationLogoutUser.logoutUser(tToken));
+          verify(mockAuthenticationLogoutUser.logoutUser());
         },
       );
 
@@ -287,10 +284,10 @@ void main() {
         'should return left of server failure when mock throws server exception',
         () async {
           // arrange
-          when(mockAuthenticationLogoutUser.logoutUser(any))
+          when(mockAuthenticationLogoutUser.logoutUser())
               .thenThrow(ServerException());
           // act
-          final res = await authenticationRepositoryImpl.logout(tToken);
+          final res = await authenticationRepositoryImpl.logout();
           // assert
           expect(res, equals(Left(ServerFailure())));
         },
@@ -299,10 +296,10 @@ void main() {
         'should return left of cache failure when mock throws cache exception',
         () async {
           // arrange
-          when(mockAuthenticationLogoutUser.logoutUser(any))
+          when(mockAuthenticationLogoutUser.logoutUser())
               .thenThrow(CacheException());
           // act
-          final res = await authenticationRepositoryImpl.logout(tToken);
+          final res = await authenticationRepositoryImpl.logout();
           // assert
           expect(res, equals(Left(CacheFailure())));
         },
@@ -311,10 +308,10 @@ void main() {
         'should return right login model when every thing is ok',
         () async {
           // arrange
-          when(mockAuthenticationLogoutUser.logoutUser(any))
+          when(mockAuthenticationLogoutUser.logoutUser())
               .thenAnswer((_) async => _logoutEntity);
           // act
-          final res = await authenticationRepositoryImpl.logout(tToken);
+          final res = await authenticationRepositoryImpl.logout();
           // assert
           expect(res, equals(Right(_logoutEntity)));
         },

@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
+import '../../../../../usecases.dart';
 import '../../../domain/entity/logout_entity.dart';
 import '../../../domain/usecases/logout_user.dart';
 import '../../../../../core/error/failures.dart';
@@ -78,7 +79,7 @@ class AuthenticationBloc
         yield PasswordNotVisibleState();
     } else if (event is LogoutUserEvent) {
       yield AuthenticationLoadingState();
-      final logoutEither = await logoutUser(LogoutParam(event.token));
+      final logoutEither = await logoutUser(NoParam());
       yield* logoutEither.fold(
         (Failures l) async* {
           yield AuthenticationErrorState(_mapErrorStateToMessage(l));

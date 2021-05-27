@@ -16,5 +16,5 @@ abstract class AuthenticationRepository {
     RegisterParamModel registerParamModel,
   );
 
-  Future<Either<Failures, LogoutEntity>> logout(String token);
+  Future<Either<Failures, LogoutEntity>> logout();
 }

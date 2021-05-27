@@ -10,6 +10,7 @@ import 'package:tdd_test/features/authentication/domain/usecases/login_user.dart
 import 'package:tdd_test/features/authentication/domain/usecases/logout_user.dart';
 import 'package:tdd_test/features/authentication/domain/usecases/register_user.dart';
 import 'package:tdd_test/features/authentication/presentation/bloc/bloc/authentication_bloc.dart';
+import 'package:tdd_test/usecases.dart';
 
 class MockLoginUser extends Mock implements LoginUser {}
 
@@ -166,9 +167,6 @@ void main() {
 
       final _logoutEntity =
           LogoutEntity(status: true, message: 'Logout done successfully');
-      final tToken =
-          'tdxlV4nUV8Jex8AKSIIX1uYECciKbTByz0l3OSfMEUawePy7bnX929cRKOnEF7rRaOa23J';
-
       test(
         'should call register method to register user',
         () async {
@@ -221,9 +219,9 @@ void main() {
           when(mockLogoutUser(any))
               .thenAnswer((_) async => Right(_logoutEntity));
 
-          bloc.add(LogoutUserEvent(tToken));
+          bloc.add(LogoutUserEvent());
           await untilCalled(mockLogoutUser(any));
-          verify(mockLogoutUser(LogoutParam(tToken)));
+          verify(mockLogoutUser(NoParam()));
         },
       );
 
@@ -242,7 +240,7 @@ void main() {
             AuthenticationErrorState(SERVER_FAILURE_MESSAGE),
           ];
           expectLater(bloc.stream, emitsInOrder(expected));
-          bloc.add(LogoutUserEvent(tToken));
+          bloc.add(LogoutUserEvent());
         },
       );
 
@@ -259,7 +257,7 @@ void main() {
           ];
           // assert
           expectLater(bloc.stream, emitsInOrder(expected));
-          bloc.add(LogoutUserEvent(tToken));
+          bloc.add(LogoutUserEvent());
         },
       );
       test(
@@ -277,7 +275,7 @@ void main() {
             AuthenticationErrorState(CACHE_FAILURE_MESSAGE),
           ];
           expectLater(bloc.stream, emitsInOrder(expected));
-          bloc.add(LogoutUserEvent(tToken));
+          bloc.add(LogoutUserEvent());
         },
       );
     },
