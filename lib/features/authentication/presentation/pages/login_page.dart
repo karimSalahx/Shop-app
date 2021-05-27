@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tdd_test/core/regex_helper.dart';
+import '../../../../core/regex_helper.dart';
 import '../bloc/bloc/authentication_bloc.dart';
 import 'logged_in_page.dart';
 import '../widgets/custom_login_register_button.dart';
@@ -71,6 +71,7 @@ class _LoginPageState extends State<LoginPage> {
                       SizedBox(height: 20),
                       CustomLoginRegisterTextField(
                         labelText: 'Email Address',
+                        keyBoardType: TextInputType.emailAddress,
                         prefixIcon: Icons.email_outlined,
                         isPassword: false,
                         controller: _emailController,
@@ -84,6 +85,7 @@ class _LoginPageState extends State<LoginPage> {
                       SizedBox(height: 20),
                       CustomLoginRegisterTextField(
                           labelText: 'Password',
+                          keyBoardType: null,
                           prefixIcon: Icons.lock_outline,
                           isPassword: true,
                           controller: _passwordController,
@@ -121,6 +123,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void _dispatchLogin() {
+    _passwordController.clear();
     _globalKey.currentState.save();
     if (_globalKey.currentState.validate()) {
       BlocProvider.of<AuthenticationBloc>(context).add(

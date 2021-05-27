@@ -14,7 +14,6 @@ class AuthenticationLoadingState extends AuthenticationState {}
 class AuthenticationLoggedInState extends AuthenticationState {
   final LoginEntity loginModel;
   AuthenticationLoggedInState(this.loginModel);
-
   @override
   List<Object> get props => [loginModel];
 }
@@ -37,3 +36,12 @@ class AuthenticationErrorState extends AuthenticationState {
 class PasswordVisibleState extends AuthenticationState {}
 
 class PasswordNotVisibleState extends AuthenticationState {}
+
+class UserLoggedOutState extends AuthenticationState {
+  final LogoutEntity logoutEntity;
+  UserLoggedOutState(this.logoutEntity);
+  @override
+  List<Object> get props => [logoutEntity];
+}
+
+class UserLoggedInState extends AuthenticationState {}

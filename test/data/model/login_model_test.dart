@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:tdd_test/features/authentication/data/model/login_model.dart';
-import 'package:tdd_test/features/authentication/domain/entity/login_model.dart';
+import 'package:tdd_test/features/authentication/domain/entity/login_entity.dart';
 
 import '../../fixtures/fixture_reader.dart';
 

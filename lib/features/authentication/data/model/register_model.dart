@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import '../../domain/entity/register_model.dart';
+import '../../domain/entity/register_entity.dart';
 
 class RegisterModel extends RegisterEntity {
   RegisterModel({

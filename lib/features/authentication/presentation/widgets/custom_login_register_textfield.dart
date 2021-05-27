@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/regex_helper.dart';
 import '../bloc/bloc/authentication_bloc.dart';
 
 class CustomLoginRegisterTextField extends StatelessWidget {
@@ -11,6 +10,7 @@ class CustomLoginRegisterTextField extends StatelessWidget {
   final bool isPassword;
   final void Function(String value) onChanged;
   final void Function(String value) validator;
+  final TextInputType keyBoardType;
   final TextEditingController controller;
 
   const CustomLoginRegisterTextField({
@@ -20,6 +20,7 @@ class CustomLoginRegisterTextField extends StatelessWidget {
     @required this.onChanged,
     @required this.controller,
     @required this.validator,
+    @required this.keyBoardType,
     this.state,
   });
 
@@ -33,8 +34,9 @@ class CustomLoginRegisterTextField extends StatelessWidget {
           children: [
             TextFormField(
               controller: controller,
+              onChanged: onChanged,
               onSaved: onChanged,
-              keyboardType: !isPassword ? TextInputType.emailAddress : null,
+              keyboardType: keyBoardType,
               obscureText: isPassword && !(state is PasswordVisibleState),
               style: TextStyle(color: Colors.black),
               decoration: InputDecoration(

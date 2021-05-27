@@ -9,8 +9,10 @@ class CustomHeadLineText extends StatelessWidget {
       alignment: Alignment.topLeft,
       child: Text(
         this.title,
-        style:
-            Theme.of(context).textTheme.headline3.copyWith(color: Colors.black),
+        style: Theme.of(context)
+            .textTheme
+            .headline3
+            .copyWith(color: Colors.black, letterSpacing: .5),
         textAlign: TextAlign.left,
       ),
     );

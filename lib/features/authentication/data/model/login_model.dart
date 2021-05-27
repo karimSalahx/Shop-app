@@ -1,5 +1,5 @@
 import 'package:meta/meta.dart';
-import '../../domain/entity/login_model.dart';
+import '../../domain/entity/login_entity.dart';
 
 class LoginModel extends LoginEntity {
   LoginModel({

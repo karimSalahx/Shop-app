@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/cupertino.dart';
-
+import '../datasources/authentication_logout_user.dart';
+import '../model/logout_model.dart';
 import '../../../../core/error/failures.dart';
 import '../../../../core/error/server_exception.dart';
 import '../../domain/repository/authentication_repository.dart';
@@ -13,10 +14,12 @@ import '../model/register_model.dart';
 class AuthenticationRepositoryImpl implements AuthenticationRepository {
   final AuthenticationLoginUser authenticationLoginUser;
   final AuthenticationRegisterUser authenticationRegisterUser;
+  final AuthenticationLogoutUser authenticationLogoutUser;
 
   AuthenticationRepositoryImpl({
     @required this.authenticationLoginUser,
     @required this.authenticationRegisterUser,
+    @required this.authenticationLogoutUser,
   });
 
   @override
@@ -43,12 +46,6 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
   }
 
   @override
-  Future<Either<Failures, void>> logout() {
-    // TODO: implement logout
-    throw UnimplementedError();
-  }
-
-  @override
   Future<Either<Failures, RegisterModel>> registerUser(
     RegisterParamModel registerParamModel,
   ) async {
@@ -60,6 +57,20 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
       return Left(ServerFailure());
     } on CredentialException catch (e) {
       return Left(CredentialsFailure(e.message));
+    }
+  }
+
+  @override
+  Future<Either<Failures, LogoutModel>> logout(String token) async {
+    try {
+      final _logoutModel = await authenticationLogoutUser.logoutUser(token);
+      return Right(_logoutModel);
+    } on ServerException {
+      return Left(ServerFailure());
+    } on CredentialException catch (e) {
+      return Left(CredentialsFailure(e.message));
+    } on CacheException {
+      return Left(CacheFailure());
     }
   }
 }

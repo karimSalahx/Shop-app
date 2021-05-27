@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 import '../../../../core/error/failures.dart';
-import '../entity/register_model.dart';
+import '../entity/register_entity.dart';
 import '../repository/authentication_repository.dart';
 import '../../../../usecases.dart';
 
@@ -29,6 +29,9 @@ class RegisterParamModel extends Equatable {
     @required this.email,
     @required this.password,
   });
+
+  @override
+  String toString() => '$name , $phone, $email , $password';
 
   @override
   List<Object> get props => [this.name, this.phone, this.password, this.email];

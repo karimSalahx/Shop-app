@@ -18,6 +18,14 @@ class AuthenticationRegisterUserImpl implements AuthenticationRegisterUser {
   Future<RegisterModel> registerUser(RegisterParamModel param) async {
     final http.Response response = await client.post(
       Uri.parse(_baseUrl + 'register'),
+      body: jsonEncode(
+        <String, String>{
+          'name': param.name,
+          'phone': param.phone,
+          'email': param.email,
+          'password': param.password
+        },
+      ),
       headers: {'Content-Type': 'application/json', 'lang': 'en'},
     );
     if (response.statusCode == 200) {

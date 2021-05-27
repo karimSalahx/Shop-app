@@ -4,8 +4,10 @@ import 'package:mockito/mockito.dart';
 import 'package:tdd_test/core/error/failures.dart';
 import 'package:tdd_test/core/error/server_exception.dart';
 import 'package:tdd_test/features/authentication/data/datasources/authentication_login_user.dart';
+import 'package:tdd_test/features/authentication/data/datasources/authentication_logout_user.dart';
 import 'package:tdd_test/features/authentication/data/datasources/authentication_register_user.dart';
 import 'package:tdd_test/features/authentication/data/model/login_model.dart';
+import 'package:tdd_test/features/authentication/data/model/logout_model.dart';
 import 'package:tdd_test/features/authentication/data/model/register_model.dart';
 import 'package:tdd_test/features/authentication/data/repository/authentication_repository_impl.dart';
 import 'package:tdd_test/features/authentication/domain/usecases/register_user.dart';
@@ -16,17 +18,23 @@ class MockAuthenticationLoginUser extends Mock
 class MockAuthenticationRegisterUser extends Mock
     implements AuthenticationRegisterUser {}
 
+class MockAuthenticationLogoutUser extends Mock
+    implements AuthenticationLogoutUser {}
+
 void main() {
   MockAuthenticationLoginUser mockAuthenticationLoginUser;
   MockAuthenticationRegisterUser mockAuthenticationRegisterUser;
+  MockAuthenticationLogoutUser mockAuthenticationLogoutUser;
   AuthenticationRepositoryImpl authenticationRepositoryImpl;
 
   setUp(() {
     mockAuthenticationLoginUser = MockAuthenticationLoginUser();
     mockAuthenticationRegisterUser = MockAuthenticationRegisterUser();
+    mockAuthenticationLogoutUser = MockAuthenticationLogoutUser();
     authenticationRepositoryImpl = AuthenticationRepositoryImpl(
       authenticationLoginUser: mockAuthenticationLoginUser,
       authenticationRegisterUser: mockAuthenticationRegisterUser,
+      authenticationLogoutUser: mockAuthenticationLogoutUser,
     );
   });
 
@@ -254,4 +262,63 @@ void main() {
       },
     );
   });
+  group(
+    'Logout',
+    () {
+      final _logoutEntity =
+          LogoutModel(status: true, message: 'Logout done successfully');
+      final tToken =
+          'tdxlV4nUV8Jex8AKSIIX1uYECciKbTByz0l3OSfMEUawePy7bnX929cRKOnEF7rRaOa23J';
+
+      test(
+        'should logout user when the method is called',
+        () async {
+          // arrange
+          when(mockAuthenticationLogoutUser.logoutUser(any))
+              .thenAnswer((_) async => _logoutEntity);
+          // act
+          await authenticationRepositoryImpl.logout(tToken);
+          // assert
+          verify(mockAuthenticationLogoutUser.logoutUser(tToken));
+        },
+      );
+
+      test(
+        'should return left of server failure when mock throws server exception',
+        () async {
+          // arrange
+          when(mockAuthenticationLogoutUser.logoutUser(any))
+              .thenThrow(ServerException());
+          // act
+          final res = await authenticationRepositoryImpl.logout(tToken);
+          // assert
+          expect(res, equals(Left(ServerFailure())));
+        },
+      );
+      test(
+        'should return left of cache failure when mock throws cache exception',
+        () async {
+          // arrange
+          when(mockAuthenticationLogoutUser.logoutUser(any))
+              .thenThrow(CacheException());
+          // act
+          final res = await authenticationRepositoryImpl.logout(tToken);
+          // assert
+          expect(res, equals(Left(CacheFailure())));
+        },
+      );
+      test(
+        'should return right login model when every thing is ok',
+        () async {
+          // arrange
+          when(mockAuthenticationLogoutUser.logoutUser(any))
+              .thenAnswer((_) async => _logoutEntity);
+          // act
+          final res = await authenticationRepositoryImpl.logout(tToken);
+          // assert
+          expect(res, equals(Right(_logoutEntity)));
+        },
+      );
+    },
+  );
 }

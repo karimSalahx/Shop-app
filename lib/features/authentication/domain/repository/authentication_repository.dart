@@ -1,8 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:meta/meta.dart';
+import '../entity/logout_entity.dart';
 import '../../../../core/error/failures.dart';
-import '../entity/login_model.dart';
-import '../entity/register_model.dart';
+import '../entity/login_entity.dart';
+import '../entity/register_entity.dart';
 import '../usecases/register_user.dart';
 
 abstract class AuthenticationRepository {
@@ -15,5 +16,5 @@ abstract class AuthenticationRepository {
     RegisterParamModel registerParamModel,
   );
 
-  Future<Either<Failures, void>> logout();
+  Future<Either<Failures, LogoutEntity>> logout(String token);
 }

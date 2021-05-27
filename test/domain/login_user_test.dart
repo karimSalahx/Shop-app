@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:tdd_test/features/authentication/domain/entity/login_model.dart';
+import 'package:tdd_test/features/authentication/domain/entity/login_entity.dart';
 import 'package:tdd_test/features/authentication/domain/repository/authentication_repository.dart';
 import 'package:tdd_test/features/authentication/domain/usecases/login_user.dart';
 

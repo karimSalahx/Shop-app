@@ -27,3 +27,10 @@ class ChangePasswordVisibiliyEvent extends AuthenticationEvent {
   @override
   List<Object> get props => [];
 }
+
+class LogoutUserEvent extends AuthenticationEvent {
+  final String token;
+  LogoutUserEvent(this.token);
+  @override
+  List<Object> get props => [token];
+}

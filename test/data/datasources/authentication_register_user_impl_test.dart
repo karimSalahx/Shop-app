@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:mockito/mockito.dart';
@@ -100,10 +102,14 @@ void main() {
 
         // assert
         verify(
-          mockHttpClient.post(
-            Uri.parse(_baseUrl + 'register'),
-            headers: {'Content-Type': 'application/json', 'lang': 'en'},
-          ),
+          mockHttpClient.post(Uri.parse(_baseUrl + 'register'),
+              headers: {'Content-Type': 'application/json', 'lang': 'en'},
+              body: jsonEncode(<String, String>{
+                'name': tRegisterParam.name,
+                'phone': tRegisterParam.phone,
+                'email': tRegisterParam.email,
+                'password': tRegisterParam.password,
+              })),
         );
       },
     );

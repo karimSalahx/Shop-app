@@ -3,9 +3,11 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
+import '../../../domain/entity/logout_entity.dart';
+import '../../../domain/usecases/logout_user.dart';
 import '../../../../../core/error/failures.dart';
-import '../../../domain/entity/login_model.dart';
-import '../../../domain/entity/register_model.dart';
+import '../../../domain/entity/login_entity.dart';
+import '../../../domain/entity/register_entity.dart';
 import '../../../domain/usecases/login_user.dart';
 import '../../../domain/usecases/register_user.dart';
 
@@ -21,8 +23,14 @@ class AuthenticationBloc
     extends Bloc<AuthenticationEvent, AuthenticationState> {
   final LoginUser loginUser;
   final RegisterUser registerUser;
-  AuthenticationBloc({@required this.loginUser, @required this.registerUser})
-      : assert(loginUser != null && registerUser != null),
+  final LogoutUser logoutUser;
+  AuthenticationBloc(
+      {@required this.loginUser,
+      @required this.registerUser,
+      @required this.logoutUser})
+      : assert(
+          loginUser != null && registerUser != null && logoutUser != null,
+        ),
         super(
           AuthenticationInitialState(),
         );
@@ -52,6 +60,7 @@ class AuthenticationBloc
     } else if (event is RegisterAuthenticationEvent) {
       yield AuthenticationLoadingState();
       final registerEither = await registerUser(event.registerParamModel);
+      print(registerEither);
       yield* registerEither.fold(
         (Failures l) async* {
           yield AuthenticationErrorState(_mapErrorStateToMessage(l));
@@ -67,6 +76,17 @@ class AuthenticationBloc
         yield PasswordVisibleState();
       else
         yield PasswordNotVisibleState();
+    } else if (event is LogoutUserEvent) {
+      yield AuthenticationLoadingState();
+      final logoutEither = await logoutUser(LogoutParam(event.token));
+      yield* logoutEither.fold(
+        (Failures l) async* {
+          yield AuthenticationErrorState(_mapErrorStateToMessage(l));
+        },
+        (LogoutEntity r) async* {
+          yield UserLoggedOutState(r);
+        },
+      );
     }
   }
 

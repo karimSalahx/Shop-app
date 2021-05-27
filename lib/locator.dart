@@ -1,6 +1,8 @@
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
+import 'features/authentication/data/datasources/authentication_logout_user.dart';
+import 'features/authentication/domain/usecases/logout_user.dart';
 import 'features/authentication/data/datasources/authentication_login_user.dart';
 import 'features/authentication/data/repository/authentication_repository_impl.dart';
 import 'features/authentication/domain/repository/authentication_repository.dart';
@@ -17,15 +19,18 @@ Future<void> init() async {
     () => AuthenticationBloc(
       loginUser: sl(),
       registerUser: sl(),
+      logoutUser: sl(),
     ),
   );
 
   sl.registerLazySingleton(() => LoginUser(sl()));
   sl.registerLazySingleton(() => RegisterUser(sl()));
+  sl.registerLazySingleton(() => LogoutUser(sl()));
   sl.registerLazySingleton<AuthenticationRepository>(
     () => AuthenticationRepositoryImpl(
       authenticationLoginUser: sl(),
       authenticationRegisterUser: sl(),
+      authenticationLogoutUser: sl(),
     ),
   );
   sl.registerLazySingleton<AuthenticationLoginUser>(
@@ -34,10 +39,18 @@ Future<void> init() async {
       sharedPreferences: sl(),
     ),
   );
+  sl.registerLazySingleton<AuthenticationRegisterUser>(
+      () => AuthenticationRegisterUserImpl(sl()));
+
+  sl.registerLazySingleton<AuthenticationLogoutUser>(
+    () => AuthenticationLogoutUserImpl(
+      client: sl(),
+      sharedPreferences: sl(),
+    ),
+  );
+
   sl.registerSingletonAsync<SharedPreferences>(
     () async => await SharedPreferences.getInstance(),
   );
-  sl.registerLazySingleton<AuthenticationRegisterUser>(
-      () => AuthenticationRegisterUserImpl(sl()));
   sl.registerLazySingleton(() => http.Client());
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tdd_test/features/authentication/presentation/pages/login_page.dart';
-import 'package:tdd_test/features/authentication/presentation/widgets/animated_obacity_login_register_text.dart';
+import '../pages/login_page.dart';
+import 'animated_obacity_login_register_text.dart';
 
 class CustomAlreadyHaveAnAccount extends StatelessWidget {
   @override
