@@ -8,7 +8,7 @@ import 'package:tdd_test/core/error/server_exception.dart';
 import 'package:tdd_test/features/authentication/data/datasources/authentication_login_user.dart';
 import 'package:tdd_test/features/authentication/data/model/login_model.dart';
 
-import '../../fixtures/fixture_reader.dart';
+import '../fixtures/fixture_reader.dart';
 
 class MockSharedPreferneces extends Mock implements SharedPreferences {}
 

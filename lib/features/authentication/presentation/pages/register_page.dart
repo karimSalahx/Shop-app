@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../core/routes/route_generator.dart';
 import '../../../../core/regex_helper.dart';
 import '../widgets/custom_already_have_an_account.dart';
 import '../../domain/usecases/register_user.dart';
@@ -66,11 +67,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         ),
                       );
                     else if (state is AuthenticationRegisteredState)
-                      Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(
-                          builder: (_) => LoggedInPage(),
-                        ),
-                      );
+                      Navigator.of(context).pushNamed(Routes.homeScreen);
                   },
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 12.0),

@@ -1,0 +1,36 @@
+{
+    "status": true,
+    "message": null,
+    "data": {
+        "banners": [
+            {
+                "id": 13,
+                "image": "https://student.valuxapps.com/storage/uploads/banners/1619501214k9Xz9.banner_foods.png",
+                "category": {
+                    "id": 27,
+                    "image": "https://student.valuxapps.com/storage/uploads/categories/1619502074w3Zie.rau-cu-qua.png",
+                    "name": "Fresh food"
+                },
+                "product": null
+            }
+        ],
+        "products": [
+            {
+                "id": 69,
+                "price": 189,
+                "old_price": 189,
+                "discount": 0,
+                "image": "https://student.valuxapps.com/storage/uploads/products/16202553592lT06.1.jpg",
+                "name": "KN95 Face Mask white from pert 10pcs",
+                "description": "BrandPert\r\nPackage weight in KGs: 98 grams\r\nType: Protection Masks\r\nPackage height: 13.6 centimeters\r\nPackage Wid: th6.4 centimeters",
+                "images": [
+                    "https://student.valuxapps.com/storage/uploads/products/1620255359qMP2C.1.jpg",
+                    "https://student.valuxapps.com/storage/uploads/products/1620255359ZDzlh.2.jpg"
+                ],
+                "in_favorites": false,
+                "in_cart": false
+            }
+        ],
+        "ad": "https://student.valuxapps.com/storage/uploads/banners/1619501214k9Xz9.banner_foods.png"
+    }
+}

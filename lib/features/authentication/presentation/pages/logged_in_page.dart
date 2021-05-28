@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../core/routes/route_generator.dart';
 import '../bloc/bloc/authentication_bloc.dart';
 import 'login_page.dart';
 
@@ -24,11 +25,7 @@ class LoggedInPage extends StatelessWidget {
               ),
             );
           else if (state is UserLoggedOutState)
-            Navigator.of(context).pushReplacement(
-              MaterialPageRoute(
-                builder: (_) => LoginPage(),
-              ),
-            );
+            Navigator.of(context).pushNamed(Routes.loginScreen);
         }, builder: (context, state) {
           if (state is AuthenticationLoadingState)
             return CircularProgressIndicator();

@@ -1,0 +1,364 @@
+{
+    "status": true,
+    "message": null,
+    "data": {
+        "banners": [
+            {
+                "id": 11,
+                "image": "https://student.valuxapps.com/storage/uploads/banners/1619472351ITAM5.3bb51c97376281.5ec3ca8c1e8c5.jpg",
+                "category": {
+                    "id": 26,
+                    "image": "https://student.valuxapps.com/storage/uploads/categories/1618883074tPenb.super.png",
+                    "name": "Super Market"
+                },
+                "product": null
+            },
+            {
+                "id": 12,
+                "image": "https://student.valuxapps.com/storage/uploads/banners/1619472116OYHxC.45b7de97376281.5ec3ca8c1d324.jpg",
+                "category": {
+                    "id": 27,
+                    "image": "https://student.valuxapps.com/storage/uploads/categories/1619502074w3Zie.rau-cu-qua.png",
+                    "name": "Fresh food"
+                },
+                "product": null
+            },
+            {
+                "id": 13,
+                "image": "https://student.valuxapps.com/storage/uploads/banners/1619501214k9Xz9.banner_foods.png",
+                "category": {
+                    "id": 27,
+                    "image": "https://student.valuxapps.com/storage/uploads/categories/1619502074w3Zie.rau-cu-qua.png",
+                    "name": "Fresh food"
+                },
+                "product": null
+            }
+        ],
+        "products": [
+            {
+                "id": 52,
+                "price": 25000,
+                "old_price": 25000,
+                "discount": 0,
+                "image": "https://student.valuxapps.com/storage/uploads/products/1615440322npwmU.71DVgBTdyLL._SL1500_.jpg",
+                "name": "Apple iPhone 12 Pro Max 256GB 6 GB RAM, Pacific Blue",
+                "description": "DISPLAY\r\nSize: 6.7 inches\r\nResolution: 2778 x 1284 pixels, 458 PPI\r\nTechnology: OLED\r\nScreen-to-body: 87.45 %\r\nPeak brightness: 1200 cd/m2 (nit)\r\nFeatures: HDR video support, Oleophobic coating, Scratch-resistant glass (Ceramic Shield), Ambient light sensor, Proximity sensor\r\nHARDWARE\r\nSystem chip: Apple A14 Bionic\r\nProcessor: Hexa-core, 64-bit, 5 nm\r\nGPU: Yes\r\nRAM: 6GB LPDDR5\r\nInternal storage: 128GB (NVMe), not expandable\r\nDevice type: Smartphone\r\nOS: iOS (14.x)\r\nBATTERY\r\nType: Li - Ion, Not user replaceable\r\nCharging: USB Power Delivery, Qi wireless charging, MagSafe wireless charging\r\nMax charge speed: Wireless: 15.0W\r\nCAMERA\r\nRear: Triple camera\r\nMain camera: 12 MP (OIS, PDAF)\r\nSpecifications: Aperture size: F1.6; Focal length: 26 mm; Pixel size: 1.7 μm\r\nSecond camera: 12 MP (Telephoto, OIS, PDAF)\r\nSpecifications: Optical zoom: 2x; Aperture size: F2.2; Focal Length: 65 mm\r\nThird camera: 12 MP (Ultra-wide)\r\nSpecifications: Aperture size: F2.4; Focal Length: 13 mm\r\nVideo recording: 3840x2160 (4K UHD) (60 fps), 1920x1080 (Full HD) (240 fps), 1280x720 (HD) (30 fps)\r\nFeatures: OIS, HDR, Time-lapse video, Continuous autofocus, Picture-taking during video recording, Video light\r\nFront: 12 MP (Time-of-Flight (ToF), EIS, HDR, Slow-motion videos)\r\nVideo capture: 3840x2160 (4K UHD) (60 fps)\r\nDESIGN\r\nDimensions: 6.33 x 3.07 x 0.29 inches (160.84 x 78.09 x 7.39 mm)\r\nWeight: 8.03 oz (228.0 g)\r\nMaterials: Back: Glass; Frame: Stainless steel\r\nMaterials & Colors: Pacific Blue\r\nResistance: Water, Splash, Dust; IP68\r\nBiometrics: 3D Face unlock\r\nKeys: Left: Volume control, Other; Right: Lock/Unlock key\r\nCELLULAR\r\n5G: n1, n2, n3, n5, n7, n8, n12, n20, n25, n28, n38, n40, n41, n66, n71, n77, n78, n79, n260, n261, Sub-6, mmWave\r\nLTE (FDD): Bands 1(2100), 2(1900), 3(1800), 4(AWS-1), 5(850), 7(2600), 8(900), 12(700 a), 13(700 c), 14(700 PS), 17(700 b), 18(800 Lower), 19(800 Upper), 20(800 DD), 25(1900+), 26(850+), 28(700 APT), 29(700 d), 30(2300 WCS), 32(1500 L-band), 66(AWS-3), 71(600)\r\nLTE (TDD): Bands 34(2000), 38(2600), 39(1900+), 40(2300), 41(2600+), 42(3500), 46, 48(3600)\r\nUMTS: 850, 900, 1700/2100, 1900, 2100 MHz\r\nData Speed: LTE-A, HSDPA+ (4G) 42.2 Mbit/s, HSUPA 5.76 Mbit/s, UMTS\r\nDual SIM: Yes\r\nSIM type: Nano SIM, eSIM\r\nHD Voice: Yes\r\nVoLTE: Yes\r\nMULTIMEDIA\r\nHeadphones: No 3.5mm jack\r\nSpeakers: Earpiece, Loudspeaker\r\nFeatures: Dolby Atmos\r\nScreen mirroring: Wireless screen share\r\nAdditional microphone(s): for Noise cancellation\r\nCONNECTIVITY & FEATURES\r\nBluetooth: 5.0\r\nWi-Fi: 802.11 a, b, g, n, ac, ax (Wi-Fi 6), dual-band; MIMO, Wi-Fi Direct, Hotspot\r\nUSB: Lightning\r\nFeatures: Charging, Headphones port\r\nLocation: GPS, A-GPS, Glonass, Galileo, BeiDou, QZSS, Cell ID, Wi-Fi positioning\r\nSensors: Accelerometer, Gyroscope, Compass, Barometer, LiDAR scanner\r\nOther: NFC, UMA (Wi-Fi Calling)\r\nHearing aid compatible: M3, T4\r\nBrand : Apple\r\nColor : Pacific Blue\r\nOperating System Type : iOS\r\nStorage Capacity : 128GB\r\nNumber Of SIM : Single SIM & E-SIM\r\nRear Camera Resolution : 12 megapixels\r\nMobile Phone Type : Mobile Phone\r\nCellular Network Technology : 5G\r\nChipset manufacturer : Apple\r\nDisplay Size (Inch) : 6.7 inches\r\nModel Number : iPhone 12 Pro Max\r\nBattery Capacity in mAh : 3,687mAh\r\nFast Charge : Yes\r\nMemory RAM : 6 GB",
+                "images": [
+                    "https://student.valuxapps.com/storage/uploads/products/1615440322UAwSF.81KcqNGQIsL._SL1500_.jpg",
+                    "https://student.valuxapps.com/storage/uploads/products/1615440322UjY4o.71DVgBTdyLL._SL1500_.jpg"
+                ],
+                "in_favorites": false,
+                "in_cart": false
+            },
+            {
+                "id": 55,
+                "price": 44500,
+                "old_price": 44500,
+                "discount": 0,
+                "image": "https://student.valuxapps.com/storage/uploads/products/1615442168bVx52.item_XXL_36581132_143760083.jpeg",
+                "name": "Apple MacBook Pro",
+                "description": "Bring home the Apple MacBook Pro and experience computing like never before. This Apple laptop features a powerful 2.3Ghz 8th Gen-Intel Core i5 processor that makes sure the system keeps performing efficiently. Experience smooth and fast multitasking with the 8GB RAM. The Intel Iris Plus Graphics render images in high-quality and make your gaming experience a pleasing one. The macOS operating system offers various user-friendly features. Store your movies, audios, and other important files comfortably on the 512GB SSD of this device. The 13.3inch display allows you to view your favorite movies and other content in high quality. The Retina display features bright LED backlighting and a high contrast ratio that enhances your viewing experience. The True Tone technology provides a natural viewing experience by adjusting the white balance of the screen as per the color temperature of the light around. Featuring well-balanced, high-fidelity sounds, this laptop delivers an immersive audio experience. The Apple T2 chip lets you store your data in an encrypted format with the help of its Secure Enclave coprocessor. Also, it tightens the security further with the help of the Touch ID. The Touch ID only allows you to unlock your laptop using your fingerprints. The Touch Bar controls simplify various activities such as sending an email or formatting a document. This lightweight laptop can be easily carried around in your backpack. It features a space grey that gives it a distinguished and beautiful look.",
+                "images": [
+                    "https://student.valuxapps.com/storage/uploads/products/1615442168ijV8V.item_XXL_36581132_143760083.jpeg",
+                    "https://student.valuxapps.com/storage/uploads/products/161544216881jxI.item_XXL_36581132_143760084.jpeg",
+                    "https://student.valuxapps.com/storage/uploads/products/1615442168uZNcz.item_XXL_36581132_143760087.jpeg",
+                    "https://student.valuxapps.com/storage/uploads/products/1615442168VnIxG.item_XXL_36581132_143760088.jpeg"
+                ],
+                "in_favorites": false,
+                "in_cart": false
+            },
+            {
+                "id": 54,
+                "price": 11499,
+                "old_price": 12499,
+                "discount": 8,
+                "image": "https://student.valuxapps.com/storage/uploads/products/1615441020ydvqD.item_XXL_51889566_32a329591e022.jpeg",
+                "name": "Samsung 65 Inch Smart TV 4K Ultra HD Curved - UA65RU7300RXUM",
+                "description": "Brand: Samsung\r\nColor: black\r\nModel: UA65RU7300\r\nType: Curve\r\nSize: 65 inch\r\nHDMI: 3\r\nUSB: 2\r\nSmart: Yes\r\nOne Remote: Yes\r\nResolution: 3,840 x 2,160\r\nWeight: 25.0 kg\r\nDimensions (WxHxD): 145.27 x 83.81 x 12.09 cm\r\nAI Upscale: N/A\r\nSmart View: Yes",
+                "images": [
+                    "https://student.valuxapps.com/storage/uploads/products/1615441020SnVry.item_XXL_51889566_32a329591e022.jpeg",
+                    "https://student.valuxapps.com/storage/uploads/products/1615441020mgFw2.item_XXL_51889566_8dbac7d5b2039.jpeg"
+                ],
+                "in_favorites": false,
+                "in_cart": false
+            },
+            {
+                "id": 57,
+                "price": 530,
+                "old_price": 530,
+                "discount": 0,
+                "image": "https://student.valuxapps.com/storage/uploads/products/1615451352LMOAF.item_XXL_23705724_34135503.jpeg",
+                "name": "Kingston A400 Internal SSD 2.5\" 240GB SATA 3 - SA400S37/240G",
+                "description": "Brand : kingston\r\nStorage Capacity : 240 GB\r\nCompatible operating systems : Windows\r\nInterface Type : SATA\r\nDrive Type : SSD\r\nStorage Device Use : Internal Laptop\r\nModel Number : SA400S37/240G",
+                "images": [
+                    "https://student.valuxapps.com/storage/uploads/products/16154513529ml4b.item_XXL_23705724_34135503.jpeg",
+                    "https://student.valuxapps.com/storage/uploads/products/1615451352LKVSq.item_XXL_23705724_34135507.jpeg"
+                ],
+                "in_favorites": false,
+                "in_cart": false
+            },
+            {
+                "id": 58,
+                "price": 1083,
+                "old_price": 1083,
+                "discount": 0,
+                "image": "https://student.valuxapps.com/storage/uploads/products/161545152160GOl.item_XXL_39275650_152762070.jpeg",
+                "name": "Stark Iron Kettlebell, 24 KG",
+                "description": "Brand: Stark\r\nColor: Black\r\nWeight: 24 Kg\r\nTargeted Group: Unisex",
+                "images": [
+                    "https://student.valuxapps.com/storage/uploads/products/16154515218VdQx.item_XXL_39275650_152762070.jpeg",
+                    "https://student.valuxapps.com/storage/uploads/products/1615451521kM8Ij.item_XXL_39275650_152762102.jpeg"
+                ],
+                "in_favorites": false,
+                "in_cart": false
+            },
+            {
+                "id": 53,
+                "price": 5599,
+                "old_price": 10230,
+                "discount": 45,
+                "image": "https://student.valuxapps.com/storage/uploads/products/1615440689wYMHV.item_XXL_36330138_142814934.jpeg",
+                "name": "JBL Xtreme 2 Portable Waterproof Bluetooth Speaker - Blue JBLXTREME2BLUAM",
+                "description": "GENERAL SPECIFICATIONS\r\nMusic playing time: 15 hours\r\nOutput power (W): 2 x 20\r\nDIMENSIONS\r\nDimensions: 13.6 x 28.8 x 13.2 centimeters\r\nWeight: 2.39 kilograms\r\nCONTROL AND CONNECTION SPECIFICATIONS\r\nBluetooth version: 4.2\r\nBATTERY\r\nBattery capacity: 10000 mAh\r\nCharging time: 3.5 hours\r\nFEATURES\r\n3.5 mm audio cable Input: Yes\r\nAuto power off: Yes\r\nBluetooth: Yes\r\nJBL Connect+: Yes\r\nPower bank: Yes\r\nSpeakerphone: Yes\r\nVoice Assistant: Yes\r\nWaterproof: Yes",
+                "images": [
+                    "https://student.valuxapps.com/storage/uploads/products/1615440689Oojt6.item_XXL_36330138_142814947.jpeg",
+                    "https://student.valuxapps.com/storage/uploads/products/16154406895ynKU.item_XXL_36330138_142814944.jpeg",
+                    "https://student.valuxapps.com/storage/uploads/products/1615440689MjvIY.item_XXL_36330138_142814940.jpeg",
+                    "https://student.valuxapps.com/storage/uploads/products/1615440689QITsu.item_XXL_36330138_142814934.jpeg"
+                ],
+                "in_favorites": false,
+                "in_cart": false
+            },
+            {
+                "id": 59,
+                "price": 3847.5,
+                "old_price": 4000,
+                "discount": 4,
+                "image": "https://student.valuxapps.com/storage/uploads/products/1615451715MqRD4.item_XXL_131956716_5973d6a4ae72f.jpeg",
+                "name": "Phoenix Bicycle, 21 Speeds, 29 Inches - Grey",
+                "description": "Brand: Phoenix\r\nType: Bicycle\r\nNumber of speeds: 21\r\nSize: 29 Inches\r\nColor: Grey\r\nWeight: 8000 grams\r\nBike brake type: Disc",
+                "images": [
+                    "https://student.valuxapps.com/storage/uploads/products/1615451716y540i.item_XXL_131956716_5973d6a4ae72f.jpeg",
+                    "https://student.valuxapps.com/storage/uploads/products/1615451716C7jJE.item_XXL_131956716_ec98683c53083.jpeg",
+                    "https://student.valuxapps.com/storage/uploads/products/1615451716GiMZ2.item_XXL_131956716_eb4c0f57b9f0b.jpeg",
+                    "https://student.valuxapps.com/storage/uploads/products/1615451716r3scd.item_XXL_131956716_f66cba1805925.jpeg",
+                    "https://student.valuxapps.com/storage/uploads/products/1615451716i1YM5.item_XXL_131956716_4709023f61c98.jpeg",
+                    "https://student.valuxapps.com/storage/uploads/products/16154517166Lk5w.item_XXL_131956716_67a349f1c582c.jpeg"
+                ],
+                "in_favorites": false,
+                "in_cart": false
+            },
+            {
+                "id": 56,
+                "price": 32860,
+                "old_price": 35000,
+                "discount": 6,
+                "image": "https://student.valuxapps.com/storage/uploads/products/1615450256e0bZk.item_XXL_7582156_7501823.jpeg",
+                "name": "Nikon FX-format D750 - 24.3 MP, SLR Camera 24-120mm Lens, Black",
+                "description": "The Nikon FX Format D750 SLR Camera comes loaded with an array of advanced features that provide total control, enabling you to capture life’s fleeting moments in their purest form. The compact camera comes with 24 to 120mm NIKKOR lens that is perfect for capturing portraits, landscapes, and weddings. Even though this imaging device is small and lightweight, it does not compromise on performance. The device’s impressive 24.3MP CMOS image sensor and EXPEED 4 engine provide you with the ability to shoot stellar photos and videos, even in low light conditions. The sleek black camera’s movie shooting menu with preset control settings make it possible to record 1080/60p Full HD movies with reduced moiré and minimal jaggies. The SLR camera’s 3.2inch tilting TFT LCD monitor has a resolution of approximately 1229K dots. It makes it convenient for you to compose shots from tricky angles or playback the captured footage. The device’s built in WiFi simplifies on the spot sharing of your images and videos with the world. The inclusion of all these and several other sought after features make the Nikon D750 perfect for pro and semi pro photographers alike.",
+                "images": [
+                    "https://student.valuxapps.com/storage/uploads/products/1615450256RlWor.item_XXL_7582156_7501823.jpeg",
+                    "https://student.valuxapps.com/storage/uploads/products/1615450256gJZZG.item_XXL_7582156_7501825.jpeg",
+                    "https://student.valuxapps.com/storage/uploads/products/1615450256R7y4x.item_XXL_7582156_7501827.jpeg",
+                    "https://student.valuxapps.com/storage/uploads/products/1615450256NMmZ7.item_XXL_7582156_7501828.jpeg",
+                    "https://student.valuxapps.com/storage/uploads/products/1615450256zSjsY.item_XXL_7582156_7501830.jpeg",
+                    "https://student.valuxapps.com/storage/uploads/products/1615450256CbCNI.item_XXL_7582156_7501832.jpeg"
+                ],
+                "in_favorites": false,
+                "in_cart": false
+            },
+            {
+                "id": 61,
+                "price": 899,
+                "old_price": 1300,
+                "discount": 31,
+                "image": "https://student.valuxapps.com/storage/uploads/products/16154520918Mov4.item_XXL_22853917_31901608.jpeg",
+                "name": "Intex Mega Swan Island White Inflatable Swimming Pool Float Ride On - 56287",
+                "description": "THIS ISN'T YOUR RUN-OF-THE-MILL LARGE INFLATABLE SWAN POOL FLOAT. THE INTEX MEGA SWAN ISLAND INFLATABLE POOL FLOAT IS A MEGA SWAN, WITH AT LEAST TWICE THE COOL FACTOR!\r\n\r\nLOOK AS COOL AS YOU'LL FEEL ON THE WATER RIDING, PLAYING, OR LOUNGING ON THIS DURABLE 14-GAUGE VINYL INFLATABLE POOL FLOAT. WITH INCLUDED HEAVY DUTY HANDLES AND 2 AIR CHAMBERS, THIS FLOAT WILL KEEP YOU AFLOAT ON THE WATER ALL DAY LONG. IT ALSO INCLUDES A REPAIR PATCH JUST IN CASE IT'S SUBJECTED TO A LITTLE TOO MUCH FUN.\r\n\r\nSTAY COOL AND LOOK COOL WITH THE INTEX MEGA SWAN ISLAND INFLATABLE POOL FLOAT.\r\nHave fun all day on the water on this Mega Swan pool float\r\nGreat for riding, playing or lounging\r\nLook as cool as you'll feel sitting on top of a giant swan\r\n2 heavy duty handles and 2 air chambers\r\nSturdy 14-gauge vinyl construction\r\nIncludes repair patch\r\nColor: White\r\nDimension: 76.5 x 60 x 58 inches\r\nBrand : Intex\r\nnull : 5.10 Kg\r\nTargeted Group : Unisex\r\nAge : 3+\r\nOutdoor Play Activities : Swimming Pools & Water Toys\r\nRecommended Age : 12 Years & Above",
+                "images": [
+                    "https://student.valuxapps.com/storage/uploads/products/1615452091whLP8.item_XXL_22853917_31901608.jpeg",
+                    "https://student.valuxapps.com/storage/uploads/products/16154520917N5fQ.item_XXL_22853917_31901611.jpeg",
+                    "https://student.valuxapps.com/storage/uploads/products/1615452091Kg9En.item_XXL_22853917_31901618.jpeg",
+                    "https://student.valuxapps.com/storage/uploads/products/1615452091Vrf2O.item_XXL_22853917_31901616.jpeg"
+                ],
+                "in_favorites": false,
+                "in_cart": false
+            },
+            {
+                "id": 66,
+                "price": 39.99000000000000198951966012828052043914794921875,
+                "old_price": 39.99000000000000198951966012828052043914794921875,
+                "discount": 0,
+                "image": "https://student.valuxapps.com/storage/uploads/products/1620253816SgPr3.1.jpg",
+                "name": "Black Earloop Face Mask - 50 Pcs in box",
+                "description": "Type : Fold-Flat Dust Masks\r\nBrand : ARW\r\nPackage thickness: 12.4 centimeters\r\nPackage weight in KGs238 grams\r\nColor Family : Multi Color\r\nSub Type : Dust Masks\r\nSterilized fabric\r\nHypoallergenic\r\nFilter",
+                "images": [
+                    "https://student.valuxapps.com/storage/uploads/products/1620253816FGOZo.1.jpg",
+                    "https://student.valuxapps.com/storage/uploads/products/162025381600Ldh.2.jpg",
+                    "https://student.valuxapps.com/storage/uploads/products/16202538165Zl5t.3.jpg",
+                    "https://student.valuxapps.com/storage/uploads/products/1620253816hhB4S.4.jpg"
+                ],
+                "in_favorites": false,
+                "in_cart": false
+            },
+            {
+                "id": 68,
+                "price": 49,
+                "old_price": 67,
+                "discount": 27,
+                "image": "https://student.valuxapps.com/storage/uploads/products/16202548748OGFF.1.jpg",
+                "name": "Nova Soft 3-Layers Face Masks with Flexible Ear loops- GREEN - 50 Pieces",
+                "description": "BrandNOVA\r\nPackage thickness: 11.3 centimeters\r\nPackage weight in KGs: 156 grams\r\nType: Protection Masks\r\nseller notes :Each 10 face mask is packaged in a bag for easy portability without contamination",
+                "images": [
+                    "https://student.valuxapps.com/storage/uploads/products/1620254874L9Qe7.1.jpg",
+                    "https://student.valuxapps.com/storage/uploads/products/1620254874w6ISK.2.jpg",
+                    "https://student.valuxapps.com/storage/uploads/products/1620254874r7UWa.3.jpg",
+                    "https://student.valuxapps.com/storage/uploads/products/16202548740sI9m.4.jpg"
+                ],
+                "in_favorites": false,
+                "in_cart": false
+            },
+            {
+                "id": 70,
+                "price": 15999,
+                "old_price": 15999,
+                "discount": 0,
+                "image": "https://student.valuxapps.com/storage/uploads/products/1620867082Z7HOO.1.jpg",
+                "name": "Sony PlayStation 5 Console with Wireless Controller, White and Black - Local Warranty",
+                "description": "Brand: Sony\r\nPlatform: playstation_5\r\nPackage thickness: 46 centimeters\r\nPackage weight in KGs: 6720 grams",
+                "images": [
+                    "https://student.valuxapps.com/storage/uploads/products/1620867082asmxD.1.jpg",
+                    "https://student.valuxapps.com/storage/uploads/products/1620867082LFMa7.2.jpg",
+                    "https://student.valuxapps.com/storage/uploads/products/16208670824QQh2.3.jpg",
+                    "https://student.valuxapps.com/storage/uploads/products/16208670827s0Al.4.jpg",
+                    "https://student.valuxapps.com/storage/uploads/products/16208670823cHLr.5.jpg"
+                ],
+                "in_favorites": false,
+                "in_cart": false
+            },
+            {
+                "id": 71,
+                "price": 17555,
+                "old_price": 22699,
+                "discount": 23,
+                "image": "https://student.valuxapps.com/storage/uploads/products/1620867641BHea3.1.jpg",
+                "name": "Samsung Galaxy S21 Ultra Dual SIM Mobile - 6.8 Inches, 256 GB, 12 GB RAM, 5G - Silver",
+                "description": "Brand: Samsung\r\nOperating System Type: Android\r\nPackage thickness: 9.3 centimeters\r\nStorage Capacity: 256 GB\r\nTHE FASTEST CHIP EVER IN GALAXY\r\nWitness the fastest chip ever in a Galaxy. With a 5nm processor on board, you get seamless multitasking and hyper-fast content streaming.\r\nCONTOUR CUT CAMERA DESIGN\r\nThe real metal finish on the main camera adds unity to the design and accentuates the luxury of the haze texture. It’s an iconic new camera design made to turn heads.\r\nINTELLIGENT BATTERY\r\nPower through your day. And then more.\r\nGalaxy S21 Ultra 5G's battery is big and smart, learning your app usage style to optimise power consumption.\r\n8K VIDEO\r\nGet cinema quality video in the palm of your hands. Capture incredible detail in 8K resolution with super smooth action at 24 frames per second.\r\nHIGH RESOLUTION\r\nGet amazingly clear, high-quality photos with the large 64MP sensor.*\r\n*Even in dark situations, it takes in plenty of light to get the rich image quality. It’s all in the details.\r\nSPACE ZOOM\r\nWith Hybrid Optic Zoom and enhanced Super Resolution you can zoom up to 30X^*^ with clarity and precision. And the new Zoom Lock helps stabilise your shots.\r\nDYNAMIC AMOLED 2X\r\nUnbelievably bright. Incredibly vivid. Surprisingly smooth. That’s precisely the viewing experience you’ll get with the Dynamic AMOLED 2X, even under bright sunlight! Thanks to our Eye Comfort Shield, it even intelligently adjusts blue light so your eyes won't feel so tired.",
+                "images": [
+                    "https://student.valuxapps.com/storage/uploads/products/162086764100J9f.1.jpg",
+                    "https://student.valuxapps.com/storage/uploads/products/1620867641JhDqI.2.jpg",
+                    "https://student.valuxapps.com/storage/uploads/products/1620867641O5EGe.3.jpg",
+                    "https://student.valuxapps.com/storage/uploads/products/16208676412AJZc.4.jpg",
+                    "https://student.valuxapps.com/storage/uploads/products/1620867641mczys.5.jpg",
+                    "https://student.valuxapps.com/storage/uploads/products/1620867641R84N1.6.jpg",
+                    "https://student.valuxapps.com/storage/uploads/products/1620867641AZRkx.7.jpg",
+                    "https://student.valuxapps.com/storage/uploads/products/1620867641aGd0s.8.jpg"
+                ],
+                "in_favorites": false,
+                "in_cart": false
+            },
+            {
+                "id": 60,
+                "price": 487.5,
+                "old_price": 554,
+                "discount": 12,
+                "image": "https://student.valuxapps.com/storage/uploads/products/1615451948lRQ93.item_XXL_122782705_d77430ea1a334.jpeg",
+                "name": "Cressi DE203450 Skylight Silicone Wide-View Anti-UV Unisex Swimming Goggles - Black & Grey",
+                "description": "Brand: Cressi\r\nThis mask uses mono-lens technology and the lenses are manufactured with an internal anti-fog treatment that are scratch-resistant and shatterproof.\r\nLenses: Slightly curved for excellent peripheral vision\r\nThe Silicone strap provides a secure and stable fit on the face for long periods in the water.\r\nEasy, adjustable buckle\r\nThe Skylight lenses in the mirrored and tinted version, block out the ultraviolet light, enabling the swimmer to see more clearly.",
+                "images": [
+                    "https://student.valuxapps.com/storage/uploads/products/1615451948pdUsP.item_XXL_122782705_d77430ea1a334.jpeg",
+                    "https://student.valuxapps.com/storage/uploads/products/1615451948W2Bkn.item_XXL_122782705_cd1549d37329b.jpeg",
+                    "https://student.valuxapps.com/storage/uploads/products/1615451948WTZWP.item_XXL_122782705_88f3db9886cd9.jpeg"
+                ],
+                "in_favorites": false,
+                "in_cart": false
+            },
+            {
+                "id": 62,
+                "price": 2972,
+                "old_price": 2972,
+                "discount": 0,
+                "image": "https://student.valuxapps.com/storage/uploads/products/1615452417AmlJk.item_XXL_42123558_50e9b1ffa8fe5.jpeg",
+                "name": "Nike air Max axis Running Shoes for Men - Black/anthracite Size - 44 EU",
+                "description": "This shoes is honors the past while looking to the future. Subtle design lines and branding pay homage to icons like the air max 97 and 98, while the updated max air unit gives a fresh take on cushioned comfort. Mesh upper enhances ventilation. Visible max air unit provides responsive cushioning. Multiple layers of no-sew skins create a tiered, faded look. Mid sole provides lightweight comfort and cushioning.\r\n\r\nPRODUCT FEATURES:\r\nBrand: Nike\r\nColor: Black\r\nMaterial: Synthetic\r\nShoes by Sport: Running\r\nSize: 44 EU\r\nTargeted Group: Men\r\nSole Material: Rubber\r\nCountry of Origin: India\r\nModel Number: NKAA2146\r\nCollection: Spring\r\nIn Sole: Textile\r\nClosure: Lace-Up\r\nUPC-A: 885176347797",
+                "images": [
+                    "https://student.valuxapps.com/storage/uploads/products/16154524179z1aF.item_XXL_42123558_50e9b1ffa8fe5.jpeg",
+                    "https://student.valuxapps.com/storage/uploads/products/1615452418Ipd7G.item_XXL_42123558_8fa2fffe04151.jpeg",
+                    "https://student.valuxapps.com/storage/uploads/products/1615452418Ceksb.item_XXL_42123558_6d9a9d76037a7.jpeg",
+                    "https://student.valuxapps.com/storage/uploads/products/16154524183cF5g.item_XXL_42123558_5bde80431a053.jpeg",
+                    "https://student.valuxapps.com/storage/uploads/products/1615452418Y58TB.item_XXL_42123558_9f5d9c51d1a1b.jpeg",
+                    "https://student.valuxapps.com/storage/uploads/products/1615452418kf3hT.item_XXL_42123558_619022676878f.jpeg"
+                ],
+                "in_favorites": false,
+                "in_cart": false
+            },
+            {
+                "id": 63,
+                "price": 1300,
+                "old_price": 1500,
+                "discount": 13,
+                "image": "https://student.valuxapps.com/storage/uploads/products/1615452692luIs3.item_XXL_122074977_7d81144b9547d.jpeg",
+                "name": "Nike Side Logo Print High Waist Sport Tights for Women - Particle Grey & Reflective Silver",
+                "description": "Brand: Nike\r\nType: Sport Tights\r\nReflective Swoosh design on back waistband\r\nA hidden pocket at the back\r\nDri-FIT technology moves sweat from your skin helping you stay dry, comfortable",
+                "images": [
+                    "https://student.valuxapps.com/storage/uploads/products/1615452692Hh2NV.item_XXL_122074977_7d81144b9547d.jpeg",
+                    "https://student.valuxapps.com/storage/uploads/products/1615452692yl8aB.item_XXL_122074977_2d964ea783190.jpeg"
+                ],
+                "in_favorites": false,
+                "in_cart": false
+            },
+            {
+                "id": 64,
+                "price": 2199,
+                "old_price": 3999,
+                "discount": 45,
+                "image": "https://student.valuxapps.com/storage/uploads/products/1619875101BSVpU.1.jpg",
+                "name": "Apple AirPods with Charging Case, MV7N2ZM/A - White",
+                "description": "The Apple AirPods, with Charging Case, are here to export you to elevate your audio listening experience. They render crystal-clear audio, thus allowing you to enjoy your favorite content to the fullest. These wireless Apple headphones are easy to use; with just a simple one-tap setup, they are ready to go. With the Siri feature, adjusting the volume, changing the song, or even making the call is all the more convenient. Is traveling on your mind? Then these AirPods are your ideal travel mates, as they keep you entertained for long in a single charge. Plus, with quick charging, you do not have to wait long before listening to your favorite beats. Powered with Apple H1 headphone chip and various technologically-advanced sensors, these AirPods are an absolute beast when it comes to delivering magical and enriching audio.",
+                "images": [
+                    "https://student.valuxapps.com/storage/uploads/products/161987510108mi3.1.jpg",
+                    "https://student.valuxapps.com/storage/uploads/products/1619875101ChuZZ.2.jpg",
+                    "https://student.valuxapps.com/storage/uploads/products/1619875101OkeEb.3.jpg",
+                    "https://student.valuxapps.com/storage/uploads/products/1619875101bl8qq.4.jpg",
+                    "https://student.valuxapps.com/storage/uploads/products/1619875101BzybS.5.jpg",
+                    "https://student.valuxapps.com/storage/uploads/products/1619875101tWWUW.6.jpg"
+                ],
+                "in_favorites": false,
+                "in_cart": false
+            },
+            {
+                "id": 67,
+                "price": 34,
+                "old_price": 34,
+                "discount": 0,
+                "image": "https://student.valuxapps.com/storage/uploads/products/162025416451YHJ.1.jpg",
+                "name": "Face mask blue 50pcs",
+                "description": "Brand: Generic\r\nColor: Blue\r\nPackage thickness: 20.8 centimeters\r\nPackage weight in KGs: 240 grams\r\nNumber of pieces : 50 Pieces\r\nAre batteries needed to power the product or is this product a battery : 0\r\nIs this a Dangerous Good or a Hazardous Material, Substance or Waste that is regulated for transportation, storage, and/or disposal? :no\r\nExpirable : no",
+                "images": [
+                    "https://student.valuxapps.com/storage/uploads/products/162025416409akG.1.jpg"
+                ],
+                "in_favorites": false,
+                "in_cart": false
+            },
+            {
+                "id": 69,
+                "price": 189,
+                "old_price": 189,
+                "discount": 0,
+                "image": "https://student.valuxapps.com/storage/uploads/products/16202553592lT06.1.jpg",
+                "name": "KN95 Face Mask white from pert 10pcs",
+                "description": "BrandPert\r\nPackage weight in KGs: 98 grams\r\nType: Protection Masks\r\nPackage height: 13.6 centimeters\r\nPackage Wid: th6.4 centimeters",
+                "images": [
+                    "https://student.valuxapps.com/storage/uploads/products/1620255359qMP2C.1.jpg",
+                    "https://student.valuxapps.com/storage/uploads/products/1620255359ZDzlh.2.jpg"
+                ],
+                "in_favorites": false,
+                "in_cart": false
+            }
+        ],
+        "ad": "https://student.valuxapps.com/storage/uploads/banners/1619501214k9Xz9.banner_foods.png"
+    }
+}
+
+
+

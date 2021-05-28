@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../core/routes/route_generator.dart';
 import '../../../../core/regex_helper.dart';
 import '../bloc/bloc/authentication_bloc.dart';
 import 'logged_in_page.dart';
@@ -59,11 +60,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       );
                     else if (state is AuthenticationLoggedInState)
-                      Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(
-                          builder: (_) => LoggedInPage(),
-                        ),
-                      );
+                      Navigator.of(context).pushNamed(Routes.homeScreen);
                   },
                   child: Column(
                     children: [

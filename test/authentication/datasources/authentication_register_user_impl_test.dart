@@ -8,7 +8,7 @@ import 'package:tdd_test/features/authentication/data/datasources/authentication
 import 'package:tdd_test/features/authentication/data/model/register_model.dart';
 import 'package:tdd_test/features/authentication/domain/usecases/register_user.dart';
 
-import '../../fixtures/fixture_reader.dart';
+import '../fixtures/fixture_reader.dart';
 
 class MockHttpClient extends Mock implements http.Client {}
 
