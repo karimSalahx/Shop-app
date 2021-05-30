@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/routes/route_generator.dart';
 import '../../../../core/regex_helper.dart';
 import '../bloc/bloc/authentication_bloc.dart';
-import 'logged_in_page.dart';
 import '../widgets/custom_login_register_button.dart';
 import '../widgets/cutom_create_account.dart';
 import '../widgets/custom_login_register_textfield.dart';

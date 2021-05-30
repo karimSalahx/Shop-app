@@ -4,7 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:tdd_test/features/authentication/data/model/register_model.dart';
 import 'package:tdd_test/features/authentication/domain/entity/register_entity.dart';
 
-import '../../fixtures/fixture_reader.dart';
+import '../../fixtures/authentication_fixture_reader.dart';
 
 void main() {
   final tName = "Abdelrahman ALgazzar";
@@ -35,7 +35,7 @@ void main() {
       () async {
         // arrange
         final Map<String, dynamic> jsonMap =
-            jsonDecode(fixture('register.json'));
+            jsonDecode(authenticationFixture('register.json'));
         // act
         final res = RegisterModel.fromJson(jsonMap);
         // assert
@@ -48,7 +48,8 @@ void main() {
     test(
       'should convert json to register model when to json is called',
       () async {
-        expect(tRegisterModel.toJson(), jsonDecode(fixture('register.json')));
+        expect(tRegisterModel.toJson(),
+            jsonDecode(authenticationFixture('register.json')));
       },
     );
   });

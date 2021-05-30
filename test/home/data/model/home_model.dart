@@ -4,7 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:tdd_test/features/home/data/models/home_model.dart';
 import 'package:tdd_test/features/home/domain/entity/home_entity.dart';
 
-import '../../../authentication/fixtures/fixture_reader.dart';
+import '../../fixtures/home_fixture_reader.dart';
 
 void main() {
   final tHomeModelSuccess = HomeModel(
@@ -59,7 +59,7 @@ void main() {
       () async {
         // arrange
         final Map<String, dynamic> jsonMap =
-            jsonDecode(fixture('home_model_simplified.json'));
+            jsonDecode(homeFixture('home_model_simplified.json'));
         // act
         final res = HomeModel.fromJson(jsonMap);
         // assert
@@ -76,7 +76,7 @@ void main() {
           tHomeModelSuccess.toJson(),
           equals(
             jsonDecode(
-              fixture(
+              homeFixture(
                 'home_model_simplified.json',
               ),
             ),

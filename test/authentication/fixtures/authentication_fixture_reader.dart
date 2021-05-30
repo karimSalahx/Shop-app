@@ -1,4 +1,4 @@
 import 'dart:io';
 
-String fixture(String name) =>
+String authenticationFixture(String name) =>
     File('test/authentication/fixtures/$name').readAsStringSync();

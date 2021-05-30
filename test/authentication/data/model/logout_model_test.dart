@@ -4,7 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:tdd_test/features/authentication/data/model/logout_model.dart';
 import 'package:tdd_test/features/authentication/domain/entity/logout_entity.dart';
 
-import '../../fixtures/fixture_reader.dart';
+import '../../fixtures/authentication_fixture_reader.dart';
 
 void main() {
   final _logoutEntity =
@@ -20,7 +20,7 @@ void main() {
       () async {
         // arrange
         final Map<String, dynamic> jsonMap =
-            jsonDecode(fixture('logout_user.json'));
+            jsonDecode(authenticationFixture('logout_user.json'));
         // act
         final res = LogoutModel.fromJson(jsonMap);
         // assert

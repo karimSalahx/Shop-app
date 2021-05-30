@@ -8,7 +8,7 @@ import 'package:tdd_test/core/error/server_exception.dart';
 import 'package:tdd_test/features/authentication/data/datasources/authentication_login_user.dart';
 import 'package:tdd_test/features/authentication/data/model/login_model.dart';
 
-import '../fixtures/fixture_reader.dart';
+import '../../fixtures/authentication_fixture_reader.dart';
 
 class MockSharedPreferneces extends Mock implements SharedPreferences {}
 
@@ -77,7 +77,7 @@ void main() {
         ),
       ).thenAnswer(
         (_) async => http.Response(
-          fixture('login.json'),
+          authenticationFixture('login.json'),
           200,
         ),
       );
@@ -92,7 +92,7 @@ void main() {
         ),
       ).thenAnswer(
         (_) async => http.Response(
-          fixture('failure_login.json'),
+          authenticationFixture('failure_login.json'),
           200,
         ),
       );

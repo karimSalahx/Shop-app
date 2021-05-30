@@ -8,7 +8,7 @@ import 'package:tdd_test/features/authentication/data/datasources/authentication
 import 'package:tdd_test/features/authentication/data/model/register_model.dart';
 import 'package:tdd_test/features/authentication/domain/usecases/register_user.dart';
 
-import '../fixtures/fixture_reader.dart';
+import '../../fixtures/authentication_fixture_reader.dart';
 
 class MockHttpClient extends Mock implements http.Client {}
 
@@ -52,7 +52,7 @@ void main() {
         ),
       ).thenAnswer(
         (_) async => http.Response(
-          fixture('register.json'),
+          authenticationFixture('register.json'),
           200,
         ),
       );
@@ -82,7 +82,7 @@ void main() {
         ),
       ).thenAnswer(
         (_) async => http.Response(
-          fixture('failure_register.json'),
+          authenticationFixture('failure_register.json'),
           200,
         ),
       );

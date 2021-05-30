@@ -1,8 +1,8 @@
-import 'package:tdd_test/core/error/failures.dart';
+import '../../../../core/error/failures.dart';
 import 'package:dartz/dartz.dart';
-import 'package:tdd_test/features/home/domain/entity/home_entity.dart';
-import 'package:tdd_test/features/home/domain/repository/home_repository.dart';
-import 'package:tdd_test/usecases.dart';
+import '../entity/home_entity.dart';
+import '../repository/home_repository.dart';
+import '../../../../usecases.dart';
 
 class GetHomeProducts implements UseCases<HomeEntity, NoParam> {
   HomeRepository repository;

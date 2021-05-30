@@ -1,15 +1,12 @@
-import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
+import '../../domain/entity/home_entity.dart';
 
 @immutable
-class HomeModel extends Equatable {
+class HomeModel extends HomeEntity {
   HomeModel({
-    @required this.status,
-    @required this.data,
-  });
-
-  final bool status;
-  final DataModel data;
+    @required bool status,
+    @required DataModel data,
+  }) : super(status: status, data: data);
 
   factory HomeModel.fromJson(Map<String, dynamic> json) => HomeModel(
         status: json["status"],
@@ -18,28 +15,24 @@ class HomeModel extends Equatable {
 
   Map<String, dynamic> toJson() => {
         "status": status,
-        "data": data.toJson(),
+        "data": (data as DataModel).toJson(),
       };
-
-  @override
-  List<Object> get props => [this.status, this.data];
 }
 
 @immutable
-class DataModel extends Equatable {
+class DataModel extends DataEntity {
   DataModel({
-    @required this.banners,
-    @required this.products,
-    @required this.ad,
-  });
-
-  final List<BannerModel> banners;
-  final List<ProductModel> products;
-  final String ad;
+    @required List<BannerModel> banners,
+    @required List<ProductModel> products,
+    @required String ad,
+  }) : super(banners: banners, products: products, ad: ad);
 
   factory DataModel.fromJson(Map<String, dynamic> json) => DataModel(
         banners: List<BannerModel>.from(
-            json["banners"].map((x) => BannerModel.fromJson(x))),
+          json["banners"].map(
+            (x) => BannerModel.fromJson(x),
+          ),
+        ),
         products: List<ProductModel>.from(
           json["products"].map(
             (x) => ProductModel.fromJson(x),
@@ -49,8 +42,16 @@ class DataModel extends Equatable {
       );
 
   Map<String, dynamic> toJson() => {
-        "banners": List<dynamic>.from(banners.map((x) => x.toJson())),
-        "products": List<dynamic>.from(products.map((x) => x.toJson())),
+        "banners": List<dynamic>.from(
+          banners.map(
+            (x) => (x as BannerModel).toJson(),
+          ),
+        ),
+        "products": List<dynamic>.from(
+          products.map(
+            (x) => (x as ProductModel).toJson(),
+          ),
+        ),
         "ad": ad,
       };
 
@@ -59,16 +60,12 @@ class DataModel extends Equatable {
 }
 
 @immutable
-class BannerModel extends Equatable {
+class BannerModel extends BannersEntity {
   BannerModel({
-    @required this.id,
-    @required this.image,
-    @required this.category,
-  });
-
-  final int id;
-  final String image;
-  final CategoryModel category;
+    @required int id,
+    @required CategoryModel category,
+    @required String image,
+  }) : super(id: id, category: category, image: image);
 
   factory BannerModel.fromJson(Map<String, dynamic> json) => BannerModel(
         id: json["id"],
@@ -79,24 +76,17 @@ class BannerModel extends Equatable {
   Map<String, dynamic> toJson() => {
         "id": id,
         "image": image,
-        "category": category.toJson(),
+        "category": (category as CategoryModel).toJson(),
       };
-
-  @override
-  List<Object> get props => [this.id, this.image, this.category];
 }
 
 @immutable
-class CategoryModel extends Equatable {
+class CategoryModel extends CategoryEntity {
   CategoryModel({
-    @required this.id,
-    @required this.image,
-    @required this.name,
-  });
-
-  final int id;
-  final String image;
-  final String name;
+    @required int id,
+    @required String image,
+    @required String name,
+  }) : super(id: id, image: image, name: name);
 
   factory CategoryModel.fromJson(Map<String, dynamic> json) => CategoryModel(
         id: json["id"],
@@ -115,30 +105,30 @@ class CategoryModel extends Equatable {
 }
 
 @immutable
-class ProductModel extends Equatable {
+class ProductModel extends ProductsEntity {
   ProductModel({
-    @required this.id,
-    @required this.price,
-    @required this.oldPrice,
-    @required this.discount,
-    @required this.image,
-    @required this.name,
-    @required this.description,
-    @required this.images,
-    @required this.inFavorites,
-    @required this.inCart,
-  });
-
-  final int id;
-  final double price;
-  final double oldPrice;
-  final int discount;
-  final String image;
-  final String name;
-  final String description;
-  final List<String> images;
-  final bool inFavorites;
-  final bool inCart;
+    @required int id,
+    @required double price,
+    @required double oldPrice,
+    @required int discount,
+    @required String image,
+    @required String name,
+    @required String description,
+    @required List<String> images,
+    @required bool inFavorites,
+    @required bool inCart,
+  }) : super(
+          description: description,
+          discount: discount,
+          id: id,
+          image: image,
+          images: images,
+          inCart: inCart,
+          inFavorites: inFavorites,
+          name: name,
+          oldPrice: oldPrice,
+          price: price,
+        );
 
   factory ProductModel.fromJson(Map<String, dynamic> json) => ProductModel(
         id: json["id"],
@@ -165,18 +155,4 @@ class ProductModel extends Equatable {
         "in_favorites": inFavorites,
         "in_cart": inCart,
       };
-
-  @override
-  List<Object> get props => [
-        this.id,
-        this.price,
-        this.oldPrice,
-        this.discount,
-        this.image,
-        this.name,
-        this.description,
-        this.images,
-        this.inFavorites,
-        this.inCart,
-      ];
 }

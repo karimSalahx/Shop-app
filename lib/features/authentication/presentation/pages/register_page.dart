@@ -9,7 +9,6 @@ import '../bloc/bloc/authentication_bloc.dart';
 import '../widgets/custom_headline_text.dart';
 import '../widgets/custom_login_register_button.dart';
 import '../widgets/custom_login_register_textfield.dart';
-import 'logged_in_page.dart';
 
 class RegisterPage extends StatefulWidget {
   @override

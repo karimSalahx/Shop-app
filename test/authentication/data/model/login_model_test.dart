@@ -4,7 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:tdd_test/features/authentication/data/model/login_model.dart';
 import 'package:tdd_test/features/authentication/domain/entity/login_entity.dart';
 
-import '../../fixtures/fixture_reader.dart';
+import '../../fixtures/authentication_fixture_reader.dart';
 
 void main() {
   final tDataModel = LoginDataModel(
@@ -35,7 +35,8 @@ void main() {
       'should return Login Model when from json is called',
       () async {
         // arrange
-        final Map<String, dynamic> jsonMap = jsonDecode(fixture('login.json'));
+        final Map<String, dynamic> jsonMap =
+            jsonDecode(authenticationFixture('login.json'));
         // act
         final res = LoginModel.fromJson(jsonMap);
         // assert
@@ -48,7 +49,8 @@ void main() {
     test(
       'should convert object to json when to json is called',
       () {
-        expect(tLoginModel.toJson(), equals(jsonDecode(fixture('login.json'))));
+        expect(tLoginModel.toJson(),
+            equals(jsonDecode(authenticationFixture('login.json'))));
       },
     );
   });

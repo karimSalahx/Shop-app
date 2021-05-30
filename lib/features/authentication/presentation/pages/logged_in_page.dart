@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/routes/route_generator.dart';
 import '../bloc/bloc/authentication_bloc.dart';
-import 'login_page.dart';
 
 class LoggedInPage extends StatelessWidget {
   @override
