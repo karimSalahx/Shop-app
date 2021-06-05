@@ -1,6 +1,11 @@
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tdd_test/features/home/data/datasources/home_get_home_products.dart';
+import 'package:tdd_test/features/home/data/repository/home_repository_impl.dart';
+import 'package:tdd_test/features/home/domain/repository/home_repository.dart';
+import 'package:tdd_test/features/home/domain/usecases/get_home_products.dart';
+import 'package:tdd_test/features/home/presentation/bloc/bloc/home_bloc.dart';
 import 'features/authentication/data/datasources/authentication_logout_user.dart';
 import 'features/authentication/domain/usecases/logout_user.dart';
 import 'features/authentication/data/datasources/authentication_login_user.dart';
@@ -15,6 +20,11 @@ import 'features/authentication/data/datasources/authentication_register_user.da
 final sl = GetIt.I;
 
 Future<void> init() async {
+  await _setupAuth();
+  await _setupHome();
+}
+
+Future<void> _setupAuth() async {
   sl.registerFactory(
     () => AuthenticationBloc(
       loginUser: sl(),
@@ -53,4 +63,12 @@ Future<void> init() async {
     () async => await SharedPreferences.getInstance(),
   );
   sl.registerLazySingleton(() => http.Client());
+}
+
+Future<void> _setupHome() async {
+  sl.registerFactory(() => HomeBloc(getHomeProducts: sl()));
+  sl.registerLazySingleton(() => GetHomeProducts(sl()));
+  sl.registerLazySingleton<HomeRepository>(() => HomeRepositoryImpl(sl()));
+  sl.registerLazySingleton<HomeGetHomeProducts>(
+      () => HomeGetHomeProductsImpl(sl()));
 }
