@@ -1,11 +1,11 @@
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:tdd_test/features/home/data/datasources/home_get_home_products.dart';
-import 'package:tdd_test/features/home/data/repository/home_repository_impl.dart';
-import 'package:tdd_test/features/home/domain/repository/home_repository.dart';
-import 'package:tdd_test/features/home/domain/usecases/get_home_products.dart';
-import 'package:tdd_test/features/home/presentation/bloc/bloc/home_bloc.dart';
+import 'features/home/data/datasources/home_get_home_products.dart';
+import 'features/home/data/repository/home_repository_impl.dart';
+import 'features/home/domain/repository/home_repository.dart';
+import 'features/home/domain/usecases/get_home_products.dart';
+import 'features/home/presentation/bloc/bloc/home_bloc.dart';
 import 'features/authentication/data/datasources/authentication_logout_user.dart';
 import 'features/authentication/domain/usecases/logout_user.dart';
 import 'features/authentication/data/datasources/authentication_login_user.dart';

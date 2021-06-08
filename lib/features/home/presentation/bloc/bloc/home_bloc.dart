@@ -3,11 +3,11 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:tdd_test/core/error/failures.dart';
-import 'package:tdd_test/features/home/data/models/home_model.dart';
-import 'package:tdd_test/features/home/domain/entity/home_entity.dart';
-import 'package:tdd_test/features/home/domain/usecases/get_home_products.dart';
-import 'package:tdd_test/usecases.dart';
+import '../../../../../core/error/failures.dart';
+import '../../../data/models/home_model.dart';
+import '../../../domain/entity/home_entity.dart';
+import '../../../domain/usecases/get_home_products.dart';
+import '../../../../../usecases.dart';
 
 part 'home_event.dart';
 part 'home_state.dart';

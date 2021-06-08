@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import '../../features/authentication/presentation/pages/logged_in_page.dart';
+import '../../features/home/presentation/pages/home_page.dart';
 import '../../features/authentication/presentation/pages/login_page.dart';
 import '../../features/authentication/presentation/pages/register_page.dart';
 
@@ -10,7 +10,7 @@ class RouteGenerator {
       case Routes.registerScreen:
         return MaterialPageRoute(builder: (_) => RegisterPage());
       case Routes.homeScreen:
-        return MaterialPageRoute(builder: (_) => LoggedInPage());
+        return MaterialPageRoute(builder: (_) => HomePage());
       case Routes.loginScreen:
         return MaterialPageRoute(builder: (_) => LoginPage());
 
