@@ -1,5 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:tdd_test/features/authentication/data/datasources/authentication_get_profile_user.dart';
+import '../../domain/usecases/get_profile_user.dart';
+import '../../domain/entity/profile_entity.dart';
 import '../datasources/authentication_logout_user.dart';
 import '../model/logout_model.dart';
 import '../../../../core/error/failures.dart';
@@ -15,11 +18,13 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
   final AuthenticationLoginUser authenticationLoginUser;
   final AuthenticationRegisterUser authenticationRegisterUser;
   final AuthenticationLogoutUser authenticationLogoutUser;
+  final AuthenticationGetProfileUser authenticationGetProfileUser;
 
   AuthenticationRepositoryImpl({
     @required this.authenticationLoginUser,
     @required this.authenticationRegisterUser,
     @required this.authenticationLogoutUser,
+    @required this.authenticationGetProfileUser,
   });
 
   @override
@@ -71,6 +76,21 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
       return Left(CredentialsFailure(e.message));
     } on CacheException {
       return Left(CacheFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failures, ProfileEntity>> getUserProfile(
+    TokenParam token,
+  ) async {
+    try {
+      final _profileModel =
+          await authenticationGetProfileUser.getProfileUser(token);
+      return Right(_profileModel);
+    } on ServerException {
+      return Left(ServerFailure());
+    } on CredentialException catch (e) {
+      return Left(CredentialsFailure(e.message));
     }
   }
 }

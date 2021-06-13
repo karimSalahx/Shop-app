@@ -61,7 +61,6 @@ class AuthenticationBloc
     } else if (event is RegisterAuthenticationEvent) {
       yield AuthenticationLoadingState();
       final registerEither = await registerUser(event.registerParamModel);
-      print(registerEither);
       yield* registerEither.fold(
         (Failures l) async* {
           yield AuthenticationErrorState(_mapErrorStateToMessage(l));

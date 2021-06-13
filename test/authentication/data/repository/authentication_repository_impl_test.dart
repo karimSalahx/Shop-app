@@ -1,15 +1,20 @@
+import 'dart:math';
+
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:tdd_test/core/error/failures.dart';
 import 'package:tdd_test/core/error/server_exception.dart';
+import 'package:tdd_test/features/authentication/data/datasources/authentication_get_profile_user.dart';
 import 'package:tdd_test/features/authentication/data/datasources/authentication_login_user.dart';
 import 'package:tdd_test/features/authentication/data/datasources/authentication_logout_user.dart';
 import 'package:tdd_test/features/authentication/data/datasources/authentication_register_user.dart';
 import 'package:tdd_test/features/authentication/data/model/login_model.dart';
 import 'package:tdd_test/features/authentication/data/model/logout_model.dart';
+import 'package:tdd_test/features/authentication/data/model/profile_model.dart';
 import 'package:tdd_test/features/authentication/data/model/register_model.dart';
 import 'package:tdd_test/features/authentication/data/repository/authentication_repository_impl.dart';
+import 'package:tdd_test/features/authentication/domain/usecases/get_profile_user.dart';
 import 'package:tdd_test/features/authentication/domain/usecases/register_user.dart';
 
 class MockAuthenticationLoginUser extends Mock
@@ -21,20 +26,26 @@ class MockAuthenticationRegisterUser extends Mock
 class MockAuthenticationLogoutUser extends Mock
     implements AuthenticationLogoutUser {}
 
+class MockAuthenticationGetProfileUser extends Mock
+    implements AuthenticationGetProfileUser {}
+
 void main() {
   MockAuthenticationLoginUser mockAuthenticationLoginUser;
   MockAuthenticationRegisterUser mockAuthenticationRegisterUser;
   MockAuthenticationLogoutUser mockAuthenticationLogoutUser;
+  MockAuthenticationGetProfileUser mockAuthenticationGetProfileUser;
   AuthenticationRepositoryImpl authenticationRepositoryImpl;
 
   setUp(() {
     mockAuthenticationLoginUser = MockAuthenticationLoginUser();
     mockAuthenticationRegisterUser = MockAuthenticationRegisterUser();
     mockAuthenticationLogoutUser = MockAuthenticationLogoutUser();
+    mockAuthenticationGetProfileUser = MockAuthenticationGetProfileUser();
     authenticationRepositoryImpl = AuthenticationRepositoryImpl(
       authenticationLoginUser: mockAuthenticationLoginUser,
       authenticationRegisterUser: mockAuthenticationRegisterUser,
       authenticationLogoutUser: mockAuthenticationLogoutUser,
+      authenticationGetProfileUser: mockAuthenticationGetProfileUser,
     );
   });
 
@@ -314,6 +325,87 @@ void main() {
           final res = await authenticationRepositoryImpl.logout();
           // assert
           expect(res, equals(Right(_logoutEntity)));
+        },
+      );
+    },
+  );
+
+  group(
+    'GetProfileUser',
+    () {
+      String tToken =
+          'EJ6DKErwawaaE7LnVvUMERonSjhi3T3H337Cgm2dwxetTQoS8GWm3DYnei0SpuR9lqTdZc';
+      final tProfileEntity = ProfileModel(
+        status: true,
+        message: null,
+        data: ProfileDataModel(
+          id: 613,
+          name: "Abdelrahman ALgazzar",
+          email: "karemmohamed2002@gmail.com",
+          phone: "123456728",
+          image:
+              "https://student.valuxapps.com/storage/uploads/users/igYRtX84xb_1619709039.jpeg",
+          points: 0,
+          credit: 0,
+          token:
+              "mIcOIfLRlGiCbasuoKSwjIl6RbmaTixN0JTrP4Ea77YVLO1WewhwA8SHb55mjATPy7YiOK",
+        ),
+      );
+
+      test(
+        'should call get profile with TokenParam',
+        () async {
+          // arrange
+          when(mockAuthenticationGetProfileUser.getProfileUser(any)).thenAnswer(
+            (_) async => tProfileEntity,
+          );
+          // act
+          await authenticationRepositoryImpl.getUserProfile(TokenParam(tToken));
+          // assert
+          verify(
+            mockAuthenticationGetProfileUser.getProfileUser(TokenParam(tToken)),
+          );
+        },
+      );
+      test(
+        'should return profile model if there is no exceptions thrown',
+        () async {
+          // arrange
+          when(mockAuthenticationGetProfileUser.getProfileUser(any)).thenAnswer(
+            (_) async => tProfileEntity,
+          );
+          // act
+          final res = await authenticationRepositoryImpl
+              .getUserProfile(TokenParam(tToken));
+          // assert
+          expect(res, equals(Right(tProfileEntity)));
+        },
+      );
+      test(
+        'should return Server Failure when server exception is thrown',
+        () async {
+          // arrange
+          when(mockAuthenticationGetProfileUser.getProfileUser(any))
+              .thenThrow(ServerException());
+          // act
+          final res = await authenticationRepositoryImpl
+              .getUserProfile(TokenParam(tToken));
+          // assert
+          expect(res, equals(Left(ServerFailure())));
+        },
+      );
+
+      test(
+        'should return Credential Failure when credential exception is thrown',
+        () async {
+          // arrange
+          when(mockAuthenticationGetProfileUser.getProfileUser(any))
+              .thenThrow(CredentialException('Not Authorized'));
+          // act
+          final res = await authenticationRepositoryImpl
+              .getUserProfile(TokenParam(tToken));
+          // assert
+          expect(res, equals(Left(CredentialsFailure('Not Authorized'))));
         },
       );
     },

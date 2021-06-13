@@ -1,5 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:meta/meta.dart';
+import '../entity/profile_entity.dart';
+import '../usecases/get_profile_user.dart';
 import '../entity/logout_entity.dart';
 import '../../../../core/error/failures.dart';
 import '../entity/login_entity.dart';
@@ -17,4 +19,6 @@ abstract class AuthenticationRepository {
   );
 
   Future<Either<Failures, LogoutEntity>> logout();
+
+  Future<Either<Failures, ProfileEntity>> getUserProfile(TokenParam token);
 }
