@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tdd_test/features/home/presentation/pages/home_page.dart';
 import 'core/routes/route_generator.dart';
 import 'features/authentication/presentation/bloc/bloc/authentication_bloc.dart';
 
@@ -19,6 +20,7 @@ void main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    //  final String _token = sl<SharedPreferences>().getString(CACHE_TOKEN);
     return MultiBlocProvider(
       providers: [
         BlocProvider<AuthenticationBloc>(
@@ -36,4 +38,17 @@ class MyApp extends StatelessWidget {
       ),
     );
   }
+}
+
+Widget _mapStateToWidget(AuthenticationState state) {
+  if (state is UserLoggedInState) {
+    return HomePage();
+  } else if (state is AuthenticationLoadingState) {
+    return Scaffold(
+      body: Center(
+        child: CircularProgressIndicator(),
+      ),
+    );
+  } else
+    return LoginPage();
 }

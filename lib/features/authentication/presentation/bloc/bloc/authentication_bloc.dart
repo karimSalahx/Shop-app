@@ -3,6 +3,9 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:tdd_test/features/authentication/data/model/profile_model.dart';
+import 'package:tdd_test/features/authentication/domain/entity/profile_entity.dart';
+import 'package:tdd_test/features/authentication/domain/usecases/get_profile_user.dart';
 import '../../../../../usecases.dart';
 import '../../../domain/entity/logout_entity.dart';
 import '../../../domain/usecases/logout_user.dart';
@@ -20,17 +23,24 @@ const String CACHE_FAILURE_MESSAGE = 'Cache Failure';
 const String CREDENTIAL_FAILURE_MESSAGE =
     'Credentials Entered are not Correct!';
 
+const CACHE_TOKEN = 'CACHE_TOKEN';
+
 class AuthenticationBloc
     extends Bloc<AuthenticationEvent, AuthenticationState> {
   final LoginUser loginUser;
   final RegisterUser registerUser;
   final LogoutUser logoutUser;
-  AuthenticationBloc(
-      {@required this.loginUser,
-      @required this.registerUser,
-      @required this.logoutUser})
-      : assert(
-          loginUser != null && registerUser != null && logoutUser != null,
+  final GetProfileUser getProfileUser;
+  AuthenticationBloc({
+    @required this.loginUser,
+    @required this.registerUser,
+    @required this.logoutUser,
+    @required this.getProfileUser,
+  })  : assert(
+          loginUser != null &&
+              registerUser != null &&
+              logoutUser != null &&
+              getProfileUser != null,
         ),
         super(
           AuthenticationInitialState(),
@@ -42,7 +52,34 @@ class AuthenticationBloc
   Stream<AuthenticationState> mapEventToState(
     AuthenticationEvent event,
   ) async* {
-    if (event is LogInAuthenticationEvent) {
+    if (event is GetUserProfileEvent) {
+      if (event.token != null) {
+        // This means that there exist a token in shared pref we need to check if this token authorized
+        yield AuthenticationLoadingState();
+        final getProfileEither = await getProfileUser(TokenParam(event.token));
+        yield* getProfileEither.fold(
+          (Failures l) async* {
+            switch (l.runtimeType) {
+              // if status is false => Not Authorized
+              case CredentialsFailure:
+                yield UserNotLoggedInState();
+                break;
+              case ServerFailure:
+                yield AuthenticationErrorState(SERVER_FAILURE_MESSAGE);
+                break;
+              default:
+                yield AuthenticationErrorState(SERVER_FAILURE_MESSAGE);
+                break;
+            }
+          },
+          // if authorized
+          (ProfileEntity r) async* {
+            yield UserLoggedInState(r);
+          },
+        );
+      } else
+        yield UserNotLoggedInState();
+    } else if (event is LogInAuthenticationEvent) {
       yield AuthenticationLoadingState();
       final loginEither = await loginUser(
         LoginParam(

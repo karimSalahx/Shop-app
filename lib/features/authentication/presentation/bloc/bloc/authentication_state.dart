@@ -44,4 +44,14 @@ class UserLoggedOutState extends AuthenticationState {
   List<Object> get props => [logoutEntity];
 }
 
-class UserLoggedInState extends AuthenticationState {}
+class UserLoggedInState extends AuthenticationState {
+  final ProfileModel profileModel;
+  UserLoggedInState(this.profileModel);
+  @override
+  List<Object> get props => [this.profileModel];
+}
+
+class UserNotLoggedInState extends AuthenticationState {
+  @override
+  List<Object> get props => [];
+}

@@ -32,3 +32,10 @@ class LogoutUserEvent extends AuthenticationEvent {
   @override
   List<Object> get props => [];
 }
+
+class GetUserProfileEvent extends AuthenticationEvent {
+  final String token;
+  GetUserProfileEvent(this.token);
+  @override
+  List<Object> get props => [];
+}

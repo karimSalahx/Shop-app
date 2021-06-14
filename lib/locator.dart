@@ -1,6 +1,8 @@
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tdd_test/features/authentication/data/datasources/authentication_get_profile_user.dart';
+import 'package:tdd_test/features/authentication/domain/usecases/get_profile_user.dart';
 import 'features/home/data/datasources/home_get_home_products.dart';
 import 'features/home/data/repository/home_repository_impl.dart';
 import 'features/home/domain/repository/home_repository.dart';
@@ -30,19 +32,30 @@ Future<void> _setupAuth() async {
       loginUser: sl(),
       registerUser: sl(),
       logoutUser: sl(),
+      getProfileUser: sl(),
     ),
   );
 
   sl.registerLazySingleton(() => LoginUser(sl()));
   sl.registerLazySingleton(() => RegisterUser(sl()));
   sl.registerLazySingleton(() => LogoutUser(sl()));
+  sl.registerLazySingleton(() => GetProfileUser(sl()));
   sl.registerLazySingleton<AuthenticationRepository>(
     () => AuthenticationRepositoryImpl(
+      authenticationGetProfileUser: sl(),
       authenticationLoginUser: sl(),
       authenticationRegisterUser: sl(),
       authenticationLogoutUser: sl(),
     ),
   );
+
+  sl.registerLazySingleton<AuthenticationGetProfileUser>(
+    () => AuthenticationGetProfileUserImpl(
+      sharedPreferences: sl(),
+      client: sl(),
+    ),
+  );
+
   sl.registerLazySingleton<AuthenticationLoginUser>(
     () => AuthenticationLoginUserImpl(
       client: sl(),

@@ -29,6 +29,23 @@ class HomeTopCarouselSlider extends StatelessWidget {
                       margin: EdgeInsets.symmetric(horizontal: 5.0),
                       child: Image.network(
                         i.image,
+                        loadingBuilder: (
+                          BuildContext context,
+                          Widget child,
+                          ImageChunkEvent loadingProgress,
+                        ) {
+                          // if loading progress is null return empty widget
+                          if (loadingProgress == null) return child;
+                          // else return circular progress indicator with progress
+                          return Center(
+                            child: CircularProgressIndicator(
+                              value: loadingProgress.expectedTotalBytes != null
+                                  ? loadingProgress.cumulativeBytesLoaded /
+                                      loadingProgress.expectedTotalBytes
+                                  : null,
+                            ),
+                          );
+                        },
                         fit: BoxFit.fill,
                       ),
                     );
