@@ -2,19 +2,29 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:tdd_test/core/error/failures.dart';
+import 'package:tdd_test/features/home/data/models/add_remove_favorities_model.dart';
 import 'package:tdd_test/features/home/data/models/home_model.dart';
+import 'package:tdd_test/features/home/domain/usecases/add_remove_product_to_favorites.dart';
 import 'package:tdd_test/features/home/domain/usecases/get_home_products.dart';
 import 'package:tdd_test/features/home/presentation/bloc/bloc/home_bloc.dart';
 import 'package:tdd_test/usecases.dart';
 
 class MockGetHomeProducts extends Mock implements GetHomeProducts {}
 
+class MockAddRemoveToFavorites extends Mock
+    implements AddRemoveProductToFavorites {}
+
 void main() {
   HomeBloc bloc;
   MockGetHomeProducts mockGetHomeProducts;
+  MockAddRemoveToFavorites mockAddRemoveToFavorites;
   setUp(() {
     mockGetHomeProducts = MockGetHomeProducts();
-    bloc = HomeBloc(getHomeProducts: mockGetHomeProducts);
+    mockAddRemoveToFavorites = MockAddRemoveToFavorites();
+    bloc = HomeBloc(
+      getHomeProducts: mockGetHomeProducts,
+      addRemoveProductToFavorites: mockAddRemoveToFavorites,
+    );
   });
 
   final tHomeModelSuccess = HomeModel(
@@ -55,7 +65,11 @@ void main() {
       ],
     ),
   );
-
+  final tAddToFavoritesEntity =
+      AddRemoveFavoritesModel(status: true, message: "Added Successfully");
+  final tToken =
+      'eVEFdqRNRvxuo2TjIvcmvLLYoWQPboR31qSTz5hmptMR05z2iesqeKJONqklJoyfsyumh5';
+  final tProductParam = ProductParam(52, tToken);
   test(
     'should emit home initial as the initial state',
     () async {
@@ -93,6 +107,24 @@ void main() {
       bloc.add(GetHomeProductsEvent());
       expectLater(bloc.stream, emitsInOrder(expected));
       await untilCalled(mockGetHomeProducts(any));
+    },
+  );
+  test(
+    'should call add remove products usecase when event is FavoriteButtonClicked',
+    () async {
+      // arrange
+      when(mockAddRemoveToFavorites(any))
+          .thenAnswer((_) async => Right(tAddToFavoritesEntity));
+      // act
+      bloc.add(
+        FavoriteButtonClicked(
+          productId: tProductParam.id,
+          token: tProductParam.token,
+        ),
+      );
+      // assert
+      await untilCalled(mockAddRemoveToFavorites(any));
+      verify(mockAddRemoveToFavorites(tProductParam));
     },
   );
 }

@@ -20,21 +20,26 @@ void main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    //  final String _token = sl<SharedPreferences>().getString(CACHE_TOKEN);
+    final String _token = sl<SharedPreferences>().getString(CACHE_TOKEN);
     return MultiBlocProvider(
       providers: [
         BlocProvider<AuthenticationBloc>(
-          create: (context) => sl<AuthenticationBloc>(),
+          create: (context) =>
+              sl<AuthenticationBloc>()..add(GetUserProfileEvent(_token)),
         ),
       ],
-      child: MaterialApp(
-        title: 'Shop app',
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        home: LoginPage(),
-        onGenerateRoute: RouteGenerator.generateRoute,
+      child: BlocBuilder<AuthenticationBloc, AuthenticationState>(
+        builder: (context, state) {
+          return MaterialApp(
+            title: 'Shop app',
+            debugShowCheckedModeBanner: false,
+            theme: ThemeData(
+              primarySwatch: Colors.blue,
+            ),
+            home: _mapStateToWidget(state),
+            onGenerateRoute: RouteGenerator.generateRoute,
+          );
+        },
       ),
     );
   }

@@ -3,15 +3,27 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:tdd_test/core/error/failures.dart';
 import 'package:tdd_test/core/error/server_exception.dart';
+import 'package:tdd_test/features/home/data/datasources/home_add_remove_favorities.dart';
 import 'package:tdd_test/features/home/data/datasources/home_get_home_products.dart';
+import 'package:tdd_test/features/home/data/models/add_remove_favorities_model.dart';
 import 'package:tdd_test/features/home/data/models/home_model.dart';
 import 'package:tdd_test/features/home/data/repository/home_repository_impl.dart';
+import 'package:tdd_test/features/home/domain/usecases/add_remove_product_to_favorites.dart';
 
 class MockHomeGetHomeProducts extends Mock implements HomeGetHomeProducts {}
 
+class MockHomeAddRemoveToFavorites extends Mock
+    implements HomeAddRemoveFavorities {}
+
+final tAddToFavoritesEntity =
+    AddRemoveFavoritesModel(status: true, message: "Added Successfully");
+final tToken =
+    'eVEFdqRNRvxuo2TjIvcmvLLYoWQPboR31qSTz5hmptMR05z2iesqeKJONqklJoyfsyumh5';
+final tProductParam = ProductParam(52, tToken);
 void main() {
   HomeRepositoryImpl repository;
   MockHomeGetHomeProducts mockHomeRepository;
+  MockHomeAddRemoveToFavorites mockHomeAddRemoveToFavorites;
 
   final tHomeModelSuccess = HomeModel(
     status: true,
@@ -53,7 +65,11 @@ void main() {
   );
   setUp(() {
     mockHomeRepository = MockHomeGetHomeProducts();
-    repository = HomeRepositoryImpl(mockHomeRepository);
+    mockHomeAddRemoveToFavorites = MockHomeAddRemoveToFavorites();
+    repository = HomeRepositoryImpl(
+      homeAddRemoveFavorities: mockHomeAddRemoveToFavorites,
+      homeGetHomeProducts: mockHomeRepository,
+    );
   });
 
   test(
@@ -91,6 +107,48 @@ void main() {
       final res = await repository.getHomeProducts();
       // assert
       expect(res, equals(Right(tHomeModelSuccess)));
+    },
+  );
+
+  test('should call add remove products to favorites from repository',
+      () async {
+    // arrange
+    when(mockHomeAddRemoveToFavorites.addRemoveToFavorities(any))
+        .thenAnswer((_) async => tAddToFavoritesEntity);
+    // act
+    await repository.addRemoveProductToFavorites(tProductParam);
+    // assert
+    verify(
+      mockHomeAddRemoveToFavorites.addRemoveToFavorities(
+        tProductParam,
+      ),
+    );
+  });
+
+  test(
+    'should return left server failure when server exception is thrown',
+    () async {
+      // arrange
+      when(mockHomeAddRemoveToFavorites.addRemoveToFavorities(any))
+          .thenThrow(ServerException());
+
+      // act
+      final res = await repository.addRemoveProductToFavorites(tProductParam);
+      // assert
+      expect(res, equals(Left(ServerFailure())));
+    },
+  );
+
+  test(
+    'should return right add remove to favorites model when there is no errors catched',
+    () async {
+      // arrange
+      when(mockHomeAddRemoveToFavorites.addRemoveToFavorities(any))
+          .thenAnswer((_) async => tAddToFavoritesEntity);
+      // act
+      final res = await repository.addRemoveProductToFavorites(tProductParam);
+      // assert
+      expect(res, equals(Right(tAddToFavoritesEntity)));
     },
   );
 }

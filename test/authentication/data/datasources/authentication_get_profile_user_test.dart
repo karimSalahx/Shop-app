@@ -66,20 +66,6 @@ void main() {
         );
       }
 
-      void setUpMockClientSuccess200ButFailureInput() {
-        when(
-          client.get(
-            any,
-            headers: anyNamed('headers'),
-          ),
-        ).thenAnswer(
-          (_) async => http.Response(
-            authenticationFixture('failure_profile.json'),
-            200,
-          ),
-        );
-      }
-
       void setUpMockHttpClientFail() {
         when(
           client.get(

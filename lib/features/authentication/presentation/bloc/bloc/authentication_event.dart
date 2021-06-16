@@ -22,7 +22,6 @@ class RegisterAuthenticationEvent extends AuthenticationEvent {
   List<Object> get props => [registerParamModel];
 }
 
-// ignore: must_be_immutable
 class ChangePasswordVisibiliyEvent extends AuthenticationEvent {
   @override
   List<Object> get props => [];

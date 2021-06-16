@@ -1,10 +1,7 @@
-import 'dart:math';
-
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:tdd_test/core/error/failures.dart';
-import 'package:tdd_test/core/error/server_exception.dart';
 import 'package:tdd_test/features/authentication/data/model/profile_model.dart';
 import 'package:tdd_test/features/authentication/data/model/register_model.dart';
 import 'package:tdd_test/features/authentication/domain/entity/login_entity.dart';

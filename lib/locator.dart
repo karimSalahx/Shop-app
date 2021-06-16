@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tdd_test/features/authentication/data/datasources/authentication_get_profile_user.dart';
 import 'package:tdd_test/features/authentication/domain/usecases/get_profile_user.dart';
+import 'package:tdd_test/features/home/data/datasources/home_add_remove_favorities.dart';
 import 'features/home/data/datasources/home_get_home_products.dart';
 import 'features/home/data/repository/home_repository_impl.dart';
 import 'features/home/domain/repository/home_repository.dart';
@@ -81,7 +82,10 @@ Future<void> _setupAuth() async {
 Future<void> _setupHome() async {
   sl.registerFactory(() => HomeBloc(getHomeProducts: sl()));
   sl.registerLazySingleton(() => GetHomeProducts(sl()));
-  sl.registerLazySingleton<HomeRepository>(() => HomeRepositoryImpl(sl()));
+  sl.registerLazySingleton<HomeRepository>(() => HomeRepositoryImpl(
+      homeGetHomeProducts: sl(), homeAddRemoveFavorities: sl()));
+  sl.registerLazySingleton<HomeAddRemoveFavorities>(
+      () => HomeAddRemoveFavoritiesImpl(sl()));
   sl.registerLazySingleton<HomeGetHomeProducts>(
       () => HomeGetHomeProductsImpl(sl()));
 }
